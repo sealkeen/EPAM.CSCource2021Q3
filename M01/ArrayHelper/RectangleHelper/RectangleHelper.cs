@@ -5,20 +5,15 @@ using System.Text;
 
 namespace RectangleHelper
 {
-    public class RectangleHelper
+    public class RectangleCalculator
     {
-        public static T Square<T>(T width, T height) where T : struct
+        public int Square(int width, int height)
         {
-            dynamic square = width;
-            square *= height;
-            return square;
+            return (width * height);
         }
-        public static T Perimeter<T>(T width, T height) where T : struct
+        public int Perimeter(int width, int height)
         {
-            dynamic perimeter = width;
-            perimeter += height;
-            perimeter *= 2;
-            return perimeter;
+            return (width + height) * 2;
         }
     }
 }
