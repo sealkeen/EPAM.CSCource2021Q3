@@ -3,9 +3,27 @@
 namespace Students
 {
     //TODO: Create a console application called "Students".
-    //TODO: Create a class "Student" which includes string FullName and string Email(name is like Name Surname, email is like name.surname @epam.com).
+    //TODO: Create a class "Student" which includes string FullName and string Email
+    //(name is like Name Surname, email is like name.surname @epam.com).
     class Student {
+        private string FullName { get; set; }
+        private string Email { get; set; }
         //TODO: Create a constuctor for this class, which takes only Email(you can get the FullName from the Email).
+        Student(string email) { 
+            
+        }
+        bool IsValidEmail(string email)
+        {
+            try
+            {
+                var addr = new System.Net.Mail.MailAddress(email);
+                return addr.Address == email;
+            }
+            catch
+            {
+                return false;
+            }
+        }
         //TODO: Create a constructor for this class, which takes name and surname(you can get FullName and Email from name and surname).
         //TODO: In the main method create a string array "subjects" which contains 6 different shcool subjects("Maths, "PE", etc..).
         //TODO: In the main method create 3 students with different names using first constructor
