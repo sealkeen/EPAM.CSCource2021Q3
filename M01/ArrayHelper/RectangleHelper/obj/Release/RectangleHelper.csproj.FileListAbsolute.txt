@@ -1,0 +1,5 @@
+C:\Users\Sealkeen\Downloads\EPAM training\M01\ArrayHelper\RectangleHelper\bin\Release\RectangleHelper.dll
+C:\Users\Sealkeen\Downloads\EPAM training\M01\ArrayHelper\RectangleHelper\bin\Release\RectangleHelper.pdb
+C:\Users\Sealkeen\Downloads\EPAM training\M01\ArrayHelper\RectangleHelper\obj\Release\RectangleHelper.csprojResolveAssemblyReference.cache
+C:\Users\Sealkeen\Downloads\EPAM training\M01\ArrayHelper\RectangleHelper\obj\Release\RectangleHelper.dll
+C:\Users\Sealkeen\Downloads\EPAM training\M01\ArrayHelper\RectangleHelper\obj\Release\RectangleHelper.pdb

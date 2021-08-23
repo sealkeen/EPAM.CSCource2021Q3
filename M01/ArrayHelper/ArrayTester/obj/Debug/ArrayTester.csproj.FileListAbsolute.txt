@@ -1,0 +1,9 @@
+C:\Users\Sealkeen\Downloads\EPAM training\M01\ArrayHelper\ArrayTester\bin\Debug\ArrayTester.exe
+C:\Users\Sealkeen\Downloads\EPAM training\M01\ArrayHelper\ArrayTester\bin\Debug\ArrayTester.pdb
+C:\Users\Sealkeen\Downloads\EPAM training\M01\ArrayHelper\ArrayTester\bin\Debug\ArrayHelper.dll
+C:\Users\Sealkeen\Downloads\EPAM training\M01\ArrayHelper\ArrayTester\bin\Debug\ArrayHelper.pdb
+C:\Users\Sealkeen\Downloads\EPAM training\M01\ArrayHelper\ArrayTester\obj\Debug\ArrayTester.csprojResolveAssemblyReference.cache
+C:\Users\Sealkeen\Downloads\EPAM training\M01\ArrayHelper\ArrayTester\obj\Debug\ArrayTester.exe
+C:\Users\Sealkeen\Downloads\EPAM training\M01\ArrayHelper\ArrayTester\obj\Debug\ArrayTester.pdb
+C:\Users\Sealkeen\Downloads\EPAM training\M01\ArrayHelper\ArrayTester\bin\Debug\RectangleHelper.dll
+C:\Users\Sealkeen\Downloads\EPAM training\M01\ArrayHelper\ArrayTester\bin\Debug\RectangleHelper.pdb
