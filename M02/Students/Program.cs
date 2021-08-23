@@ -30,12 +30,18 @@ namespace Students
             }
         }
         //TODO: Create a constructor for this class, which takes name and surname(you can get FullName and Email from name and surname).
-        //TODO: In the main method create a string array "subjects" which contains 6 different shcool subjects("Maths, "PE", etc..).
-        //TODO: In the main method create 3 students with different names using first constructor
-
-
-        //TODO: (like var student1c1 = new Student("vasya.pupkin@epam.com")
+        Student(string name, string surname)
+        {
+            FullName = name + " " + surname;
+            Email = name + "." + surname + "@epam.com"; 
+        }
     }
+
+    //TODO: In the main method create a string array "subjects" which contains 6 different shcool subjects("Maths, "PE", etc..).
+    //TODO: In the main method create 3 students with different names using first constructor
+
+    //TODO: (like var student1c1 = new Student("vasya.pupkin@epam.com")
+
     //TODO: In the main method create 3 students with the same names names using second constructor
 
 
