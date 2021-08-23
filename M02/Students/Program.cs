@@ -4,15 +4,15 @@ namespace Students
 {
     //TODO: Create a console application called "Students".
     //TODO: Create a class "Student" which includes string FullName and string Email(name is like Name Surname, email is like name.surname @epam.com).
-    //TODO: Create a constuctor for this class, which takes only Email(you can get the FullName from the Email).
-    //TODO: Create a constructor for this class, which takes name and surname(you can get FullName and Email from name and surname).
-    //TODO: In the main method create a string array "subjects" which contains 6 different shcool subjects("Maths, "PE", etc..).
-    //TODO: In the main method create 3 students with different names using first constructor
+    class Student {
+        //TODO: Create a constuctor for this class, which takes only Email(you can get the FullName from the Email).
+        //TODO: Create a constructor for this class, which takes name and surname(you can get FullName and Email from name and surname).
+        //TODO: In the main method create a string array "subjects" which contains 6 different shcool subjects("Maths, "PE", etc..).
+        //TODO: In the main method create 3 students with different names using first constructor
 
 
-    //TODO: (like var student1c1 = new Student("vasya.pupkin@epam.com")
-
-
+        //TODO: (like var student1c1 = new Student("vasya.pupkin@epam.com")
+    }
     //TODO: In the main method create 3 students with the same names names using second constructor
 
 
