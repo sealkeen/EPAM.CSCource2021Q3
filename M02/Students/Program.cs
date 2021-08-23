@@ -9,8 +9,11 @@ namespace Students
         private string FullName { get; set; }
         private string Email { get; set; }
         //TODO: Create a constuctor for this class, which takes only Email(you can get the FullName from the Email).
-        Student(string email) { 
-            
+        Student(string email) {
+            if (IsValidEmail(email))
+            {
+                
+            }
         }
         bool IsValidEmail(string email)
         {
