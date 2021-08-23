@@ -15,19 +15,17 @@ namespace Students
                 string[] fullName = email.Split('@')[0].Split('.');
                 if (fullName.Length == 2)
                 {
-                    
+                    FullName = fullName[0] + " " + fullName[1];
                 }
             }
         }
         bool IsValidEmail(string email)
         {
-            try
-            {
+            try {
                 var addr = new System.Net.Mail.MailAddress(email);
                 return addr.Address == email;
             }
-            catch
-            {
+            catch {
                 return false;
             }
         }
