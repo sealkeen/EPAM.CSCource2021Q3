@@ -12,7 +12,11 @@ namespace Students
         Student(string email) {
             if (IsValidEmail(email))
             {
-                
+                string[] fullName = email.Split('@')[0].Split('.');
+                if (fullName.Length == 2)
+                {
+                    
+                }
             }
         }
         bool IsValidEmail(string email)
