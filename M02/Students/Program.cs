@@ -9,7 +9,7 @@ namespace Students
         private string FullName { get; set; }
         private string Email { get; set; }
         //TODO: Create a constuctor for this class, which takes only Email(you can get the FullName from the Email).
-        Student(string email) {
+        public Student(string email) {
             if (IsValidEmail(email))
             {
                 var fullName = email.Split('@')[0].Split('.');
@@ -30,7 +30,7 @@ namespace Students
             }
         }
         //TODO: Create a constructor for this class, which takes name and surname(you can get FullName and Email from name and surname).
-        Student(string name, string surname)
+        public Student(string name, string surname)
         {
             FullName = name + " " + surname;
             Email = name + "." + surname + "@epam.com"; 
@@ -39,16 +39,18 @@ namespace Students
 
     class Program
     {
-        //TODO: In the main method create a string array "subjects" which contains 6 different shcool subjects("Maths, "PE", etc..).
-        //TODO: In the main method create 3 students with different names using first constructor
         static void Main(string[] args)
         {
+            //TODO: In the main method create a string array "subjects" which contains 6 different school subjects("Maths, "PE", etc..).
             var subjects = new string[] { "Math", "Physics", "", "" };
+
+            //TODO: In the main method create 3 students with different names using first constructor
+            Student[] students = new Student[] {  new Student("e"),   };
             Console.WriteLine("Hello World!");
         }
         //TODO: (like var student1c1 = new Student("vasya.pupkin@epam.com")
 
-        //TODO: In the main method create 3 students with the same names names using second constructor
+        //TODO: In the main method create 3 students with the same names using second constructor
 
 
         //TODO: (like var student1c2 = new Student("Vasya", "Pupkin").
