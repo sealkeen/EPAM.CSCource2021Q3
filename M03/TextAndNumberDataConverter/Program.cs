@@ -14,6 +14,12 @@ namespace TextAndNumberDataConverter
     }
     //TODO: Create a class that implements a method that doubles in the first string parameter all characters belonging to the second string parameter.
     //(example: first parameter - "omg i love shrek", second parameter - "o kek", result - "oomg i loovee shreekk")
+    class CharacterDuplicator {
+        private string DuplicateCharacters(string source)
+        {
+            throw new NotImplementedException();
+        }
+    }
     //TODO: Create a class that implements a method, that returns the sum of two big numbers(bigger than long). The input numbers are strings and the function must return a string.
     //(do not use long, big int and etc.)
     //TODO: Create a class that implements a method which reverses all of the words within the string passed in.
