@@ -14,27 +14,27 @@ namespace ArrayHelper
             var condition = false;
             for ( var last = (array.Length - 1) ; ; ) {
                 swapped = false;
-                for (int i = 1; i <= last; i++) {
+                for ( int i = 1; i <= last; i++ ) {
                     condition = ascending ? 
-                        More(array[i - 1], array[i]) : 
-                        Less(array[i - 1], array[i]);
+                        IsMore(array[i - 1], array[i]) : 
+                        IsLess(array[i - 1], array[i]);
                     if (condition) {
-                        Swap(ref array[i - 1], ref array[i]);
+                        SwapItem(ref array[i - 1], ref array[i]);
                         swapped = true;
                     }
                 }
                 if (!swapped) break;
             }
         }
-        public bool More(int left, int right)
+        public bool IsMore(int left, int right)
         {
             return (left > right);
         }
-        public bool Less(int left, int right)
+        public bool IsLess(int left, int right)
         {
             return (left < right);
         }
-        public void Swap(ref int left, ref int right)
+        public void SwapItem(ref int left, ref int right)
         {
             var _temp = right;
             right = left;
