@@ -43,7 +43,7 @@ namespace Students
         //TODO: In the main method create 3 students with different names using first constructor
         static void Main(string[] args)
         {
-            var ;
+            var subjects = new string[] { "Math", "Physics", "", "" };
             Console.WriteLine("Hello World!");
         }
         //TODO: (like var student1c1 = new Student("vasya.pupkin@epam.com")
