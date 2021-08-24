@@ -77,7 +77,7 @@ namespace Students
         {
             Program program = new Program();
             //TODO: In the main method create a string array "subjects" which contains 6 different school subjects("Maths, "PE", etc..).
-            var subjects = new string[] { "Math", "Physics", "Literature", "Chemistry", "Biology", "" };
+            var subjects = new string[] { "Math", "Physics", "Literature", "Chemistry", "Biology", "Geography" };
 
             //TODO: In the main method create 3 students with different names using first constructor
             //TODO: (like var student1c1 = new Student("vasya.pupkin@epam.com")
