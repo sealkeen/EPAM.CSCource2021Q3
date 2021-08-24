@@ -11,9 +11,9 @@ namespace ArrayTester
     {
         static void Main(string[] args)
         {
-            ArraySorter arraySorter = new ArraySorter();
-            ArraySummator arraySummator = new ArraySummator();
-            RectangleCalculator rectangleCalc = new RectangleCalculator();
+            var arraySorter = new ArraySorter();
+            var arraySummator = new ArraySummator();
+            var rectangleCalc = new RectangleCalculator();
 
             var array = new int[5];
             Random rnd = new Random();
