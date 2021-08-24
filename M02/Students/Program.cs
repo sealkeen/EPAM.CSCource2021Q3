@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Security.Cryptography;
 
 namespace Students
 {
@@ -9,16 +10,19 @@ namespace Students
     class Student {
         private string FullName { get; set; }
         private string Email { get; set; }
+        private int _hashCodeDebug = -1;
         //TODO: Create a constuctor for this class, which takes only Email(you can get the FullName from the Email).
         public Student(string email) {
             if (IsValidEmail(email))
             {
+                Email = email;
                 var fullName = email.Split('@')[0].Split('.');
                 if (fullName.Length == 2)
                 {
                     FullName = fullName[0] + " " + fullName[1];
                 }
             }
+            _hashCodeDebug = GetHashCode();
         }
         bool IsValidEmail(string email)
         {
@@ -34,13 +38,41 @@ namespace Students
         public Student(string name, string surname)
         {
             FullName = name + " " + surname;
-            Email = name + "." + surname + "@epam.com"; 
+            Email = name + "." + surname + "@epam.com";
+            _hashCodeDebug = GetHashCode();
+        }
+
+        public override bool Equals(object obj)
+        {
+            try {
+                var email = (obj as Student).Email.ToLower();
+                var fullname = (obj as Student).FullName.ToLower();
+                if ( email == this.Email.ToLower() && 
+                    fullname == fullname.ToLower() )
+                    return true;
+                throw new ArgumentException("object is not of a Student class.");
+            } catch {
+                return false;
+            }
+        }
+
+        public override int GetHashCode()
+        {
+            var hashCode = 0;
+            var email = Email.ToLower();
+            foreach (var ch in email)
+            {
+                hashCode += ch;
+            }
+            hashCode *= FullName.Length;
+
+            return hashCode;
         }
     }
 
     class Program
     {
-        private Random _rnd;
+        private Random _rnd = new Random();
         static void Main(string[] args)
         {
             Program program = new Program();
@@ -55,9 +87,9 @@ namespace Students
 
             //TODO: In the main method create 3 students with the same names using second constructor
             //TODO: (like var student1c2 = new Student("Vasya", "Pupkin").
-            var student1c2 = new Student("Ilya", "Varlamov");
-            var student2c2 = new Student("Arseniy", "Pirozhkov");
-            var student3c2 = new Student("Irina", "Gavrilenkova");
+            var student1c2 = new Student("ilya", "varlamov");
+            var student2c2 = new Student("arseniy", "pirozhkov");
+            var student3c2 = new Student("irina", "gavrilenkova");
 
             //TODO: Overall you should have 3 unique students (but there are 2 instances of each student)
             //TODO: Create a new empty dictionary of<Student, HashSet> called "studentSubjectDict".
@@ -74,6 +106,7 @@ namespace Students
 
             //TODO: Make sure that after that there are only three records in the "studentSubjectDict" dictionary
             //TODO: (for that purpose you should override Equals() and GetHashCode() for students class).
+            Console.WriteLine(studentSubjectDict.Keys.Count);
 
             //TODO: Task2:
             //TODO: Goal of the task is to get acquainted with Array.Sort, Stopwatch and System.Diagnostics.Process.
@@ -87,7 +120,7 @@ namespace Students
             //TODO: Compare the difference between these deltas and print it to the console.
             //TODO: Execute Array.Sort<С>(classes) и Array.Sort<S>(structs). Print the execution time of each sort to the console.
 
-            Console.WriteLine("Hello World!");
+            Console.ReadKey();
         }
 
         private HashSet<string> Generate3RandomSubjects(string[] subjects) {
@@ -98,8 +131,5 @@ namespace Students
             }
             return hashSet;
         }
-
-
-
     }
 }
