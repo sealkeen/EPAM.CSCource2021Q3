@@ -10,20 +10,15 @@ namespace ArrayHelper
     {
         public void BubbleSort(int[] array, bool ascending = true)
         {
-            var swapped = false;
             var condition = false;
-            for ( var last = (array.Length - 1) ; ; ) {
-                swapped = false;
-                for ( int i = 1; i <= last; i++ ) {
+            for (int i = 0; i < array.Length - 1; i++) {
+                for ( int j = 0 ; j < (array.Length - i - 1) ; j++ ) {
                     condition = ascending ? 
-                        IsMore(array[i - 1], array[i]) : 
-                        IsLess(array[i - 1], array[i]);
+                        IsMore( array[j], array[j+1] ) : IsLess(array[j], array[j+1]);
                     if (condition) {
-                        SwapItem(ref array[i - 1], ref array[i]);
-                        swapped = true;
+                        SwapItem(ref array[j], ref array[j+1]);
                     }
                 }
-                if (!swapped) break;
             }
         }
         public bool IsMore(int left, int right)
