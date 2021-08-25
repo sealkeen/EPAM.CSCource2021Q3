@@ -21,6 +21,7 @@ namespace ArrayHelper
                 }
             }
         }
+
         public bool IsMore(int left, int right)
         {
             return (left > right);
