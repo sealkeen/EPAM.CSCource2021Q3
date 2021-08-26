@@ -7,11 +7,11 @@ namespace RectangleHelper
 {
     public class RectangleCalculator
     {
-        public int Square(int width, int height)
+        public int GetSquare(int width, int height)
         {
             return (width * height);
         }
-        public int Perimeter(int width, int height)
+        public int GetPerimeter(int width, int height)
         {
             return (width + height) * 2;
         }

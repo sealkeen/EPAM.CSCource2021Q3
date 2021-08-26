@@ -2,3 +2,5 @@ C:\Users\Sealkeen\Downloads\EPAM training\M01\ArrayHelper\ArrayHelper\bin\Debug\
 C:\Users\Sealkeen\Downloads\EPAM training\M01\ArrayHelper\ArrayHelper\bin\Debug\ArrayHelper.pdb
 C:\Users\Sealkeen\Downloads\EPAM training\M01\ArrayHelper\ArrayHelper\obj\Debug\ArrayHelper.dll
 C:\Users\Sealkeen\Downloads\EPAM training\M01\ArrayHelper\ArrayHelper\obj\Debug\ArrayHelper.pdb
+C:\Users\Sealkeen\Downloads\EPAM training\M01\ArrayHelper\ArrayHelper\obj\Debug\ArrayHelper.csproj.AssemblyReference.cache
+C:\Users\Sealkeen\Downloads\EPAM training\M01\ArrayHelper\ArrayHelper\obj\Debug\ArrayHelper.csproj.CoreCompileInputs.cache

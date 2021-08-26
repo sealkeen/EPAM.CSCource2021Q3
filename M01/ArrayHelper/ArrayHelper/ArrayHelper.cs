@@ -6,7 +6,8 @@ using System.Text;
 
 namespace ArrayHelper
 {
-    public class ArraySorter
+    //TODO: Choose a single right name for the class (v)
+    public class ArrayHelper
     {
         public void BubbleSort(int[] array, bool ascending = true)
         {
@@ -15,7 +16,7 @@ namespace ArrayHelper
                 for ( int j = 0 ; j < (array.Length - i - 1) ; j++ ) {
                     condition = ascending ? 
                         IsMore( array[j], array[j+1] ) : IsLess(array[j], array[j+1]);
-                    if (condition) {
+                    if (ascending == (array[i] > array[i + 1])) {
                         SwapItem(ref array[j], ref array[j+1]);
                     }
                 }
