@@ -11,10 +11,6 @@ namespace ArrayTester
     {
         static void Main(string[] args)
         {
-            var arraySorter = new ArrayHelper.ArrayHelper();
-            var arraySummator = new ArraySummator();
-            var rectangleCalc = new RectangleCalculator();
-
             var array = new int[5];
             Random rnd = new Random();
 
@@ -23,6 +19,7 @@ namespace ArrayTester
                 array[i] = rnd.Next(10);
             }
 
+            var arraySorter = new ArrayHelper.ArrayHelper();
             Console.WriteLine("Random Int array:"); Show(array);
             arraySorter.BubbleSort(array, false);
             Console.WriteLine("Random Int array sorted (Descending): "); Show(array);
@@ -30,9 +27,11 @@ namespace ArrayTester
             var twoDimArr = new int[,] { { 3, -2 }, { 7, -4 } };
             Console.WriteLine("Two dim array: "); Show(twoDimArr);
 
+            var arraySummator = new ArraySummator();
             Console.WriteLine("Two dim array sum of positives: ");
             Console.WriteLine(arraySummator.GetArraySum(twoDimArr));
 
+            var rectangleCalc = new RectangleCalculator();
             Console.WriteLine($"Perimeter of a rectangle 4, 5 <int>:, {rectangleCalc.GetPerimeter(4, 5)}");
             Console.WriteLine($"Square of a rectangle 4, 5 <int>: {rectangleCalc.GetSquare(4, 5)}");
 
