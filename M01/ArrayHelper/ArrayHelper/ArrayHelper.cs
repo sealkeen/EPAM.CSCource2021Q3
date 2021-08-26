@@ -18,7 +18,7 @@ namespace ArrayHelper
                 {
                     condition = ascending ? 
                         IsMore( array[j], array[j+1] ) : IsLess(array[j], array[j+1]);
-                    if (ascending == (array[i] > array[i + 1])) 
+                    if (condition) 
                     {
                         SwapItem(ref array[j], ref array[j+1]);
                     }
