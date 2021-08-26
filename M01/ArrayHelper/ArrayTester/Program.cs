@@ -21,7 +21,7 @@ namespace ArrayTester
 
             var arraySorter = new ArrayHelper.ArrayHelper();
             Console.WriteLine("Random Int array:"); Show(array);
-            arraySorter.BubbleSort(array, false);
+            arraySorter.BubbleSort(array, true);
             Console.WriteLine("Random Int array sorted (Descending): "); Show(array);
 
             var twoDimArr = new int[,] { { 3, -2 }, { 7, -4 } };
