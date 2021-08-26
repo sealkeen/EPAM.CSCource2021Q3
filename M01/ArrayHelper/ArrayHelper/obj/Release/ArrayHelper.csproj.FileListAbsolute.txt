@@ -1,5 +1,0 @@
-C:\Users\Sealkeen\Downloads\EPAM training\M01\ArrayHelper\ArrayHelper\bin\Release\ArrayHelper.dll
-C:\Users\Sealkeen\Downloads\EPAM training\M01\ArrayHelper\ArrayHelper\bin\Release\ArrayHelper.pdb
-C:\Users\Sealkeen\Downloads\EPAM training\M01\ArrayHelper\ArrayHelper\obj\Release\ArrayHelper.dll
-C:\Users\Sealkeen\Downloads\EPAM training\M01\ArrayHelper\ArrayHelper\obj\Release\ArrayHelper.pdb
-C:\Users\Sealkeen\Downloads\EPAM training\M01\ArrayHelper\ArrayHelper\obj\Release\ArrayHelper.csprojResolveAssemblyReference.cache

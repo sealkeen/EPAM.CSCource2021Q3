@@ -1,6 +1,0 @@
-C:\Users\Sealkeen\Downloads\EPAM training\M01\ArrayHelper\RectangleHelper\bin\Debug\RectangleHelper.dll
-C:\Users\Sealkeen\Downloads\EPAM training\M01\ArrayHelper\RectangleHelper\bin\Debug\RectangleHelper.pdb
-C:\Users\Sealkeen\Downloads\EPAM training\M01\ArrayHelper\RectangleHelper\obj\Debug\RectangleHelper.dll
-C:\Users\Sealkeen\Downloads\EPAM training\M01\ArrayHelper\RectangleHelper\obj\Debug\RectangleHelper.pdb
-C:\Users\Sealkeen\Downloads\EPAM training\M01\ArrayHelper\RectangleHelper\obj\Debug\RectangleHelper.csproj.AssemblyReference.cache
-C:\Users\Sealkeen\Downloads\EPAM training\M01\ArrayHelper\RectangleHelper\obj\Debug\RectangleHelper.csproj.CoreCompileInputs.cache
