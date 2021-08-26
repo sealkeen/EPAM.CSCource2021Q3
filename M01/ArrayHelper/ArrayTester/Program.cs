@@ -29,7 +29,7 @@ namespace ArrayTester
             Console.WriteLine("Two dim array: "); Show<int>(twoDimArr);
 
             Console.WriteLine("Two dim array sum of positives: ");
-            Console.WriteLine(arraySummator.Sum(twoDimArr));
+            Console.WriteLine(arraySummator.GetArraySum(twoDimArr));
 
             Console.WriteLine($"Perimeter of a rectangle 4, 5 <int>:, {rectangleCalc.GetPerimeter(4, 5)}");
             Console.WriteLine($"Square of a rectangle 4, 5 <int>: {rectangleCalc.GetSquare(4, 5)}");

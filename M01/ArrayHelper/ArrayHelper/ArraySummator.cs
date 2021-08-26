@@ -7,7 +7,7 @@ namespace ArrayHelper
 {
     public class ArraySummator
     {
-        public int Sum(int[,] array)
+        public int GetArraySum(int[,] array)
         {
             var sum = 0;
             for (int i = 0; i < array.GetLength(0); i++) {
