@@ -39,9 +39,9 @@ namespace ArrayTester
         }
         static private void Show(Array array)
         {
-            foreach (var e in array) 
+            foreach (var item in array) 
             {
-                Console.Write(e+" ");
+                Console.Write(item+" ");
             }
             Console.WriteLine();
         }
