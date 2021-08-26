@@ -12,11 +12,14 @@ namespace ArrayHelper
         public void BubbleSort(int[] array, bool ascending = true)
         {
             var condition = false;
-            for (int i = 0; i < array.Length - 1; i++) {
-                for ( int j = 0 ; j < (array.Length - i - 1) ; j++ ) {
+            for (int i = 0; i < array.Length - 1; i++) 
+            {
+                for ( int j = 0 ; j < (array.Length - i - 1) ; j++ ) 
+                {
                     condition = ascending ? 
                         IsMore( array[j], array[j+1] ) : IsLess(array[j], array[j+1]);
-                    if (ascending == (array[i] > array[i + 1])) {
+                    if (ascending == (array[i] > array[i + 1])) 
+                    {
                         SwapItem(ref array[j], ref array[j+1]);
                     }
                 }
