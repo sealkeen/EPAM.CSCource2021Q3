@@ -11,7 +11,7 @@ namespace Simple2DGameLib
         public override void Draw()
         {
         }
-        protected override bool ElementIsOutOfArea(RenderArea area)
+        public override bool ElementIsOutOfArea(RenderArea area)
         {
             if ((this.Position.X < area.Position.X || this.Position.Y < area.Position.Y)
                 ||

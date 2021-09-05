@@ -10,7 +10,7 @@ namespace Simple2DGameLib
         public Point Position { get; set; }
         protected bool disposedValue;
         protected Color[,] _pixels;
-        protected virtual bool ElementIsOutOfArea(RenderArea area) {
+        public virtual bool ElementIsOutOfArea(RenderArea area) {
             if (this.Position.X < area.Position.X || this.Position.Y < area.Position.Y)
                 return true;
             return false;
