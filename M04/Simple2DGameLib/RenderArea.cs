@@ -5,19 +5,17 @@ using System.Text;
 
 namespace Simple2DGameLib
 {
-    public class RenderArea
+    public class RenderArea : Rectangle
     {
         private List<Shape> _models;
-        private const int _defaultWidth = 640;
-        private const int _defaultHeight = 480;
-        public int Width { get; set; }
-        public int Height { get; set; }
-        private Color[,] _pixels;
+        private const int _defaultWidth = 71;
+        private const int _defaultHeight = 30;
+        private Char[,] _pixels;
         public RenderArea(int x, int y)
         {
             Width = x >= 0? x :_defaultWidth;
             Height = y >= 0 ? y : _defaultHeight;
-            _pixels = new Color[Width, Height];
+            _pixels = new Char[Width, Height];
         }
         private void DrawArea()
         {
