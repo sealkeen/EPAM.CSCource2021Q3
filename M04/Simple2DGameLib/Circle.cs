@@ -12,9 +12,9 @@ namespace Simple2DGameLib
         {
             Radius = radius;
         }
-        public override void Draw()
+        public override void Draw(RenderArea renderArea)
         {
-            
+            throw new NotImplementedException();
         }
     }
 }

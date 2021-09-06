@@ -1,21 +1,32 @@
 ﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using System.Drawing;
 using System.Text;
 
 namespace Simple2DGameLib
 {
-    public class RenderArea : Rectangle
+    public class RenderArea : Rectangle, IEnumerable<Shape>
     {
         private List<Shape> _elements;
         private const int _defaultWidth = 71;
-        private const int _defaultHeight = 30;
-        private Char[,] _pixels;
-        public RenderArea(int x, int y)
+        private const int _defaultHeight = 13;
+        public Shape this[int index] {
+            get
+            {
+                if (index >= 0)
+                    return _elements[index];
+                else 
+                    return null;
+            }
+        }
+        public RenderArea() : this(_defaultWidth, _defaultHeight)
         {
-            Width = x >= 0? x :_defaultWidth;
-            Height = y >= 0 ? y : _defaultHeight;
-            _pixels = new Char[Width, Height];
+            _elements = new List<Shape>();
+        }
+        public RenderArea(int width, int height)
+        {
+            _pixels = new Char[width, height];
             for (int i = 0; i < Width; i++)
             {
                 for (int k = 0; k < Height; k++) {
@@ -23,10 +34,20 @@ namespace Simple2DGameLib
                 }
             }
         }
-        private void DrawArea()
+        public override void Draw(RenderArea renderArea)
         {
-            foreach (var model in _elements) {
-                model.Draw();
+            foreach (var element in _elements)
+            {
+                element.Draw(this);
+            }
+
+            for (int i = 0; i < Width; i++)
+            {
+                for (int k = 0; k < Height; k++)
+                {
+                    Console.Write(_pixels[i, k]);
+                }
+                Console.WriteLine();
             }
         }
         public bool AddElement(Shape element)
@@ -36,6 +57,18 @@ namespace Simple2DGameLib
             }
             _elements.Add(element);
             return true;
+        }
+
+        public IEnumerator<Shape> GetEnumerator()
+        {
+            foreach (var element in _elements)
+            {
+                yield return element;
+            }
+        }
+        IEnumerator IEnumerable.GetEnumerator()
+        {
+            return GetEnumerator();
         }
     }
 }

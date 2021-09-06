@@ -8,13 +8,12 @@ namespace Simple2DGameLib
     {
         public Square(int side) 
         {
-            Height = side;
-            Width = side;
+            _pixels = new char[side, side];
         }
 
-        public override void Draw()
+        public override void Draw(RenderArea renderArea)
         {
-            
+            throw new NotImplementedException();
         }
     }
 }

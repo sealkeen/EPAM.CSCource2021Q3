@@ -6,25 +6,21 @@ namespace Simple2DGameLib
 {
     public class Rectangle : Shape
     {
-        public int Height { get; set; }
-        public int Width { get; set; }
-        public void Draw(RenderArea renderArea)
+        public override void Draw(RenderArea renderArea)
         {
             for (int i = 0; i < Width; i++)
             {
                 for (int k = 0; k < Height; k++)
                 {
-                    renderArea._pixels[this.Position.X+i, this.Position.Y+k] = ' ';
+                    renderArea._pixels[this.Position.X+i, this.Position.Y+k] = _pixels[i, k];
                 }
             }
         }
         public Rectangle() 
         {
-            _pixels = null;
-            Height = 0;
-            Width = 0;
+            _pixels = new char[,] { { } };
         }
-        public Rectangle(char[,] rectangleArray) 
+        public Rectangle(char[,] rectangleArray) : this()
         {
             _pixels = rectangleArray;
         }
