@@ -14,7 +14,8 @@ namespace Simple2DGameLib
         protected char[,] _pixels;
         public int Width => _pixels.GetLength(0);
         public int Height => _pixels.GetLength(1);
-        public virtual bool ElementIsOutOfArea(RenderArea area) {
+        public virtual bool ElementIsOutOfArea(RenderArea area) 
+        {
             if (this.Position.X < area.Position.X || this.Position.Y < area.Position.Y)
                 return true;
             return false;
@@ -26,26 +27,34 @@ namespace Simple2DGameLib
 
         public void MoveRight(RenderArea renderArea)
         {
-            if(renderArea.Width > (this.Position.X + Width + step))
-                this.Position+= new Size(0, step);
+            if (renderArea.Height > (this.Position.X + Height + step))
+            {
+                this.Position += new Size(step, 0);
+            }
         }
         public void MoveLeft()
         {
-            if((Position.X - step) >= 0)
-                this.Position += new Size(0, -step);
+
+            if ((Position.X - step) >= 0)
+            {
+                this.Position += new Size(-step, 0);
+            }
         }
         public void MoveUp()
         {
             if ((Position.Y - step) >= 0)
             {
-                this.Position += new Size(-step, 0);
+                this.Position += new Size(0, -step);
             }
         }
         public void MoveDown(RenderArea renderArea)
         {
-            if (renderArea.Height > (Position.Y + Height + step))
-                this.Position += new Size(step, 0);
+            if (renderArea.Width > (Position.Y + Width + step))
+            {
+                this.Position += new Size(0, step);
+            }
         }
+
         protected virtual void Dispose(bool disposing)
         {
             if (!disposedValue)

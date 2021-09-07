@@ -9,9 +9,10 @@ namespace Simple2DGameLib
     public class RenderArea : Rectangle, IEnumerable<Shape>
     {
         private List<Shape> _elements;
-        private const int _defaultWidth = 71;
-        private const int _defaultHeight = 13;
-        public Shape this[int index] {
+        private const int _defaultWidth = 13;
+        private const int _defaultHeight = 70;
+        public Shape this[int index] 
+        {
             get
             {
                 if (index >= 0)
@@ -29,8 +30,9 @@ namespace Simple2DGameLib
             _pixels = new Char[width, height];
             for (int i = 0; i < Width; i++)
             {
-                for (int k = 0; k < Height; k++) {
-                    _pixels[i, k] = ' ';
+                for (int k = 0; k < Height; k++) 
+                {
+                    _pixels[i, k] = '_';
                 }
             }
         }
@@ -41,11 +43,11 @@ namespace Simple2DGameLib
                 element.Draw(this);
             }
 
-            for (int i = 0; i < Width; i++)
+            for (int k = 0; k < Width; k++)
             {
-                for (int k = 0; k < Height; k++)
+                for (int i = 0; i < Height; i++)
                 {
-                    Console.Write(_pixels[i, k]);
+                    Console.Write(_pixels[k, i]);
                 }
                 Console.WriteLine();
             }

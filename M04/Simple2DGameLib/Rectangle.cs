@@ -12,7 +12,7 @@ namespace Simple2DGameLib
             {
                 for (int k = 0; k < Height; k++)
                 {
-                    renderArea._pixels[this.Position.X+i, this.Position.Y+k] = _pixels[i, k];
+                    renderArea._pixels[this.Position.Y+i, this.Position.X+k] = _pixels[i, k];
                 }
             }
         }
@@ -28,7 +28,7 @@ namespace Simple2DGameLib
         {
             if ((this.Position.X < area.Position.X || this.Position.Y < area.Position.Y)
                 ||
-                (this.Position.X+Width > area.Width || this.Position.Y+Height > area.Height) 
+                (this.Position.X+Height > area.Height || this.Position.Y+Width > area.Width) 
                 )
                 return true;
             return false;
