@@ -16,9 +16,11 @@ namespace Simple2DGameLib
             get
             {
                 if (index >= 0)
+                {
                     return _elements[index];
-                else 
-                    return null;
+                }
+                else
+                    throw new IndexOutOfRangeException("Index cannot be less than zero.");
             }
         }
         public RenderArea() : this(_defaultWidth, _defaultHeight)
@@ -30,9 +32,9 @@ namespace Simple2DGameLib
             _pixels = new Char[width, height];
             for (int i = 0; i < Width; i++)
             {
-                for (int k = 0; k < Height; k++) 
+                for (int k = 0; k < Height; k++)
                 {
-                    _pixels[i, k] = '_';
+                    _pixels[i, k] = '.';
                 }
             }
         }

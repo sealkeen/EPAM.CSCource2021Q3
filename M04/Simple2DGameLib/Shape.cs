@@ -9,15 +9,17 @@ namespace Simple2DGameLib
     {
         public Point Position { get; set; }
 
-        private const int step = 1;
+        public const int Step = 1;
         protected bool disposedValue;
         protected char[,] _pixels;
         public int Width => _pixels.GetLength(0);
         public int Height => _pixels.GetLength(1);
-        public virtual bool ElementIsOutOfArea(RenderArea area) 
+        public virtual bool ElementIsOutOfArea(RenderArea area)
         {
             if (this.Position.X < area.Position.X || this.Position.Y < area.Position.Y)
+            {
                 return true;
+            }
             return false;
         }
         public virtual void Draw(RenderArea renderArea)
@@ -27,31 +29,30 @@ namespace Simple2DGameLib
 
         public void MoveRight(RenderArea renderArea)
         {
-            if (renderArea.Height > (this.Position.X + Height + step))
+            if (renderArea.Height > (this.Position.X + Height + Step - 1))
             {
-                this.Position += new Size(step, 0);
+                this.Position += new Size(Step, 0);
             }
         }
         public void MoveLeft()
         {
-
-            if ((Position.X - step) >= 0)
+            if ((Position.X - Step) >= 0)
             {
-                this.Position += new Size(-step, 0);
+                this.Position += new Size(-Step, 0);
             }
         }
         public void MoveUp()
         {
-            if ((Position.Y - step) >= 0)
+            if ((Position.Y - Step) >= 0)
             {
-                this.Position += new Size(0, -step);
+                this.Position += new Size(0, -Step);
             }
         }
         public void MoveDown(RenderArea renderArea)
         {
-            if (renderArea.Width > (Position.Y + Width + step))
+            if (renderArea.Width > (Position.Y + Width + Step - 1 ))
             {
-                this.Position += new Size(0, step);
+                this.Position += new Size(0, Step);
             }
         }
 
