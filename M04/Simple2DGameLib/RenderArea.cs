@@ -11,7 +11,7 @@ namespace Simple2DGameLib
         private List<Shape> _elements;
         private const int _defaultWidth = 13;
         private const int _defaultHeight = 70;
-        public Shape this[int index] 
+        public Shape this[int index]
         {
             get
             {
@@ -62,7 +62,6 @@ namespace Simple2DGameLib
             _elements.Add(element);
             return true;
         }
-
         public IEnumerator<Shape> GetEnumerator()
         {
             foreach (var element in _elements)
