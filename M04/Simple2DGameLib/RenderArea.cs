@@ -3,15 +3,16 @@ using System.Collections;
 using System.Collections.Generic;
 using System.Drawing;
 using System.Text;
+using ShapeLib;
 
 namespace Simple2DGameLib
 {
-    public class RenderArea : Rectangle, IEnumerable<Shape>
+    public class RenderArea : GameElement
     {
-        private List<Shape> _elements;
+        private List<GameElement> _elements;
         private const int _defaultWidth = 13;
         private const int _defaultHeight = 70;
-        public Shape this[int index]
+        public GameElement this[int index]
         {
             get
             {
@@ -25,53 +26,74 @@ namespace Simple2DGameLib
         }
         public RenderArea() : this(_defaultWidth, _defaultHeight)
         {
-            _elements = new List<Shape>();
+            _elements = new List<GameElement>();
         }
-        public RenderArea(int width, int height)
+        public RenderArea(int width, int height) : base(new char[_defaultWidth, _defaultHeight])
         {
-            _pixels = new Char[width, height];
+            Pixels = new Char[width, height];
             for (int i = 0; i < Width; i++)
             {
                 for (int k = 0; k < Height; k++)
                 {
-                    _pixels[i, k] = '.';
+                    Pixels[i, k] = '.';
                 }
             }
         }
-        public override void Draw(RenderArea renderArea)
+        public void EraseArea()
         {
+            for (int k = 0; k < Width; k++)
+            {
+                for (int i = 0; i < Height; i++)
+                {
+                    Pixels[k, i] = ' ';
+                }
+            }
+        }
+        public void Draw()
+        {
+            EraseArea();
             foreach (var element in _elements)
             {
-                element.Draw(this);
+                DrawElement(element);
             }
 
             for (int k = 0; k < Width; k++)
             {
                 for (int i = 0; i < Height; i++)
                 {
-                    Console.Write(_pixels[k, i]);
+                    Console.Write(Pixels[k, i]);
                 }
                 Console.WriteLine();
             }
         }
-        public bool AddElement(Shape element)
+        public bool AddElement(GameElement element)
         {
-            if (element.ElementIsOutOfArea(this)) {
+            if (ElementIsOutOfArea(element)) {
                 return false;
             }
             _elements.Add(element);
             return true;
         }
-        public IEnumerator<Shape> GetEnumerator()
+
+        public void DrawElement(GameElement shape)
         {
-            foreach (var element in _elements)
+            for (int i = 0; i < shape.Width; i++)
             {
-                yield return element;
+                for (int k = 0; k < shape.Height; k++)
+                {
+                    this.Pixels[shape.Position.Y + i, shape.Position.X + k] = shape.Pixels[i, k];
+                }
             }
         }
-        IEnumerator IEnumerable.GetEnumerator()
+        public bool ElementIsOutOfArea(GameElement element)
         {
-            return GetEnumerator();
+            if ((element.Position.X < this.Position.X || element.Position.Y < this.Position.Y)
+                ||
+                (element.Position.X + Height > this.Height || element.Position.Y + Width > this.Width)
+                )
+                return true;
+            return false;
         }
+
     }
 }

@@ -17,37 +17,7 @@ namespace Simple2DGame
         //The goal is to collect all bonuses and don't be eaten by monsters
         static void Main(string[] args)
         {
-            RenderArea renderArea = new RenderArea();
-            Rectangle player = new Rectangle( new[,] { 
-                { '\\', '0', '/' },
-                { ' ', 'O', ' ' },
-                { '/', ' ', '\\' } } 
-            );
-            renderArea.AddElement(player);
-            renderArea.Draw(renderArea);
-            Console.SetCursorPosition(0, 0);
-            var key = Console.ReadKey();
-            while (key.Key != ConsoleKey.Escape) {
-                key = Console.ReadKey();
-                switch (key.Key) {
-                    case ConsoleKey.RightArrow:
-                        renderArea[0].MoveRight(renderArea);
-                        break;
-                    case ConsoleKey.LeftArrow:
-                        renderArea[0].MoveLeft();
-                        break;
-                    case ConsoleKey.UpArrow:
-                        renderArea[0].MoveUp();
-                        break;
-                    case ConsoleKey.DownArrow:
-                        renderArea[0].MoveDown(renderArea);
-                        break;
-                }
-                Console.Clear();
-                renderArea.Draw(renderArea);
-                Console.SetCursorPosition(0, 0);
-            }
-
+            Game game = new Game();
         }
     }
 }
