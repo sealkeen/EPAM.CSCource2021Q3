@@ -12,8 +12,8 @@ namespace Simple2DGameLib
         }
 
         public override void MoveRight(RenderArea renderArea) { }
-        public override void MoveLeft() { }
-        public override void MoveUp() { }
+        public override void MoveLeft(RenderArea renderArea) { }
+        public override void MoveUp(RenderArea renderArea) { }
         public override void MoveDown(RenderArea renderArea) { }
     }
 }

@@ -7,8 +7,8 @@ namespace ShapeLib
     {
         protected bool disposedValue;
         public char[,] Pixels { get; set; }
-        public int Width => Pixels.GetLength(0);
-        public int Height => Pixels.GetLength(1);
+        public int Height => Pixels.GetLength(0);
+        public int Width => Pixels.GetLength(1);
         public Shape()
         {
             Pixels = new char[,] { { } };

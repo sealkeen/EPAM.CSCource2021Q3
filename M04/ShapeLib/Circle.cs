@@ -15,11 +15,12 @@ namespace ShapeLib
         public Circle(int radius, char symbol)
         {
             Radius = radius;
+            Pixels = new char[radius * 2, radius * 2];
             for (int w = 0; w < radius * 2; w++)
             {
                 for (int h = 0; h < radius * 2; w++)
                 {
-
+                    
                 }
             }
         }

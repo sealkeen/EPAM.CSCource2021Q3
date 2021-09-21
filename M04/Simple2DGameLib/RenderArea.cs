@@ -12,6 +12,7 @@ namespace Simple2DGameLib
         private List<GameElement> _elements;
         private const int _defaultWidth = 13;
         private const int _defaultHeight = 70;
+        public const char FillingSpaceChar = '.';
         public GameElement this[int index]
         {
             get
@@ -31,19 +32,19 @@ namespace Simple2DGameLib
         public RenderArea(int width, int height) : base(new char[_defaultWidth, _defaultHeight])
         {
             Pixels = new Char[width, height];
-            for (int i = 0; i < Width; i++)
+            for (int i = 0; i < Height; i++)
             {
-                for (int k = 0; k < Height; k++)
+                for (int k = 0; k < Width; k++)
                 {
-                    Pixels[i, k] = '.';
+                    Pixels[i, k] = FillingSpaceChar;
                 }
             }
         }
         public void EraseArea()
         {
-            for (int k = 0; k < Width; k++)
+            for (int k = 0; k < Height; k++)
             {
-                for (int i = 0; i < Height; i++)
+                for (int i = 0; i < Width; i++)
                 {
                     Pixels[k, i] = ' ';
                 }
@@ -51,15 +52,15 @@ namespace Simple2DGameLib
         }
         public void Draw()
         {
-            EraseArea();
+            //EraseArea();
             foreach (var element in _elements)
             {
                 DrawElement(element);
             }
 
-            for (int k = 0; k < Width; k++)
+            for (int k = 0; k < Height; k++)
             {
-                for (int i = 0; i < Height; i++)
+                for (int i = 0; i < Width; i++)
                 {
                     Console.Write(Pixels[k, i]);
                 }
@@ -77,9 +78,9 @@ namespace Simple2DGameLib
 
         public void DrawElement(GameElement shape)
         {
-            for (int i = 0; i < shape.Width; i++)
+            for (int i = 0; i < shape.Height; i++)
             {
-                for (int k = 0; k < shape.Height; k++)
+                for (int k = 0; k < shape.Width; k++)
                 {
                     this.Pixels[shape.Position.Y + i, shape.Position.X + k] = shape.Pixels[i, k];
                 }
@@ -89,7 +90,7 @@ namespace Simple2DGameLib
         {
             if ((element.Position.X < this.Position.X || element.Position.Y < this.Position.Y)
                 ||
-                (element.Position.X + Height > this.Height || element.Position.Y + Width > this.Width)
+                (element.Position.X + Width > this.Width || element.Position.Y + Height > this.Height)
                 )
                 return true;
             return false;
