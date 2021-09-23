@@ -14,5 +14,9 @@ namespace ShapeLib
         {
             Pixels = rectangleArray;
         }
+        public int Perimeter()
+        {
+            return (Width + Height) * 2;
+        }
     }
 }
