@@ -6,6 +6,7 @@ using System.Diagnostics;
 using System.Text;
 using System.Linq;
 using EPAM.CSCourse2016.ParserPerfTester.Common;
+using System.IO;
 
 namespace EPAM.CSCourse2016.SilkinIvan.JSONParser
 {
@@ -25,6 +26,41 @@ namespace EPAM.CSCourse2016.SilkinIvan.JSONParser
         private bool _isCharacterInsideQuotes = false;
         private bool _pendingForPairValue = false;
         private int _indexOfTheChar = -1;
+        public JSONParser()
+        {
+            InitializeStructure();
+        }
+        public JSONParser(string filePath) : this()
+        {
+            if (File.Exists(filePath))
+            {
+                StreamReader streamReader = new StreamReader(filePath);
+                _sourceString = new StringBuilder(streamReader.ReadToEnd());
+            }
+        }
+        private JItem InitializeStructure()
+        {
+            JKeyValuePair newPair = new JKeyValuePair(null, null);
+            JRoot Root = new JRoot();
+            _keyValueStack.Clear();
+            _itemStack.Clear();
+            _syntaxChars.Clear();
+
+            _keyValueStack.Push(newPair);
+            _itemStack.Push(Root);
+            _syntaxChars.Push(',');
+
+            _indexOfTheChar = -1;
+            _currentItem = Root;
+            return _itemStack.First();
+        }
+
+        public JItem Parse()
+        {
+            InnerParse();
+            FindRootJSItem();
+            return _currentItem;
+        }
 
         private void InnerParse()
         {
@@ -74,23 +110,6 @@ namespace EPAM.CSCourse2016.SilkinIvan.JSONParser
             {
                 _currentItem = _currentItem.Parent;
             }
-        }
-
-        private JItem InitializeStructure()
-        {
-            JKeyValuePair newPair = new JKeyValuePair(null, null);
-            JRoot Root = new JRoot();
-            _keyValueStack.Clear();
-            _itemStack.Clear();
-            _syntaxChars.Clear();
-
-            _keyValueStack.Push(newPair);
-            _itemStack.Push(Root);
-            _syntaxChars.Push(',');
-
-            _indexOfTheChar = -1;
-            _currentItem = Root;
-            return _itemStack.First();
         }
 
         /// <summary>

@@ -1,5 +1,5 @@
-using System;
 using NUnit.Framework;
+using System;
 using EPAM.CSCourse2016.SilkinIvan.JSONParser;
 using System.Diagnostics;
 using System.IO;
@@ -31,7 +31,8 @@ namespace QueriesTests
 
             root.Add(mathTest);
             root.ToFile("MathTest.json");
-            Process.Start("MathTest.json");
+            if (File.Exists("MathTest.json"))
+                Process.Start("notepad.exe", "MathTest.json");
             Assert.IsTrue(File.Exists("MathTest.json"));
         }
 

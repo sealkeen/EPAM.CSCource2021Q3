@@ -1,53 +1,39 @@
 ﻿using System;
 using System.IO;
+using System.Linq;
 using System.Diagnostics;
 using EPAM.CSCourse2016.SilkinIvan.JSONParser;
+using System.Collections.Generic;
 
 namespace QueriesClient
 {
     class Program
     {
         private static Random rnd = new Random();
+        private const string _name = "-name";
+        private const string _minmark = "-minmark";
+        private const string _maxmark = "-maxmark";
+        private const string _datefrom = "-datefrom";
+        private const string _dateto = "-dateto";
+        private const string _test = "-test";
+
         static void Main(string[] args)
         {
-            Console.WriteLine("Creating program class");
-            Program program = new Program();
-            Console.WriteLine("Creating new JSON classes");
-            program.CreateJSONTest();
+            JSONParser jSONParser = new JSONParser(FindJSONFile());
+            var jItem = jSONParser.Parse();
+            Console.WriteLine(jItem.ToString());
+
             Console.Read();
         }
-        public void CreateJSONTest()
+
+        private static string FindJSONFile()
         {
-            JRoot root = new JRoot();
-            JKeyValuePair mathTest = new JKeyValuePair(new JString("Math Test"), null, root);
-            JArray testResultArray = new JArray(mathTest);
-
-            testResultArray.Add(
-                CreateNewStudentTestResult(testResultArray, ("Ivan"), ("Ivanov")),
-                CreateNewStudentTestResult(testResultArray, ("Pyotr"), ("Petrov")),
-                CreateNewStudentTestResult(testResultArray, ("Vasily"), ("Vasilyev")),
-                CreateNewStudentTestResult(testResultArray, ("Maria"), ("Marieva")),
-                CreateNewStudentTestResult(testResultArray, ("Pavel"), ("Pavlov")),
-                CreateNewStudentTestResult(testResultArray, ("Roman"), ("Romanov")),
-                CreateNewStudentTestResult(testResultArray, ("Boris"), ("Borisov")),
-                CreateNewStudentTestResult(testResultArray, ("Ulya"), ("Ulyeva"))
-                );
-
-            mathTest.Value = testResultArray;
-
-            root.Add(mathTest);
-            root.ToFile("MathTest.json");
-            if(File.Exists("MathTest.json"))
-                Process.Start("notepad.exe", "MathTest.json");
-            //Assert.IsTrue(File.Exists("MathTest.json"));
-        }
-
-        public JObject CreateNewStudentTestResult(JArray studentArray, string firstName, string lastName)
-        {
-            JObject testResult = new JObject(studentArray);
-            JObject student = new JObject(testResult, new JKeyValuePair(new JString(firstName), new JString(lastName)));
-            testResult.Add(student, new JString(DateTime.Now.ToString()), new JSingleValue(rnd.Next(2, 5).ToString()));
-            return testResult;
+            DirectoryInfo dI = new DirectoryInfo(Environment.CurrentDirectory);
+            while (dI.Name != "M09" && dI.Parent.Exists)
+            {
+                dI = dI.Parent;
+            }
+            return $@"{dI.FullName}\QueriesTests\bin\Release\netcoreapp3.1\MathTest.json";
         }
     }
 }
