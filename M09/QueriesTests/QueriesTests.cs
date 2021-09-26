@@ -39,8 +39,14 @@ namespace QueriesTests
         public JObject CreateNewStudentTestResult(JArray studentArray, string firstName, string lastName)
         {
             JObject testResult = new JObject(studentArray);
-            JObject student = new JObject(testResult, new JKeyValuePair(new JString(firstName), new JString(lastName)));
-            testResult.Add(student, new JString(DateTime.Now.ToString()), new JSingleValue(rnd.Next(2, 5).ToString()));
+            JKeyValuePair student = new JKeyValuePair( 
+                new JString("name"),
+                new JKeyValuePair(new JString(firstName), new JString(lastName))
+                );
+            testResult.Add(student, 
+                new JKeyValuePair(new JString("date"), new JString(DateTime.Now.ToString())), 
+                new JKeyValuePair(new JString("mark"), new JSingleValue(rnd.Next(2, 5).ToString()))
+                );
             return testResult;
         }
     }

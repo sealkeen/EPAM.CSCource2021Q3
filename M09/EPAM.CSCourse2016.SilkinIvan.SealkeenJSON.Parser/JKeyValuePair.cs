@@ -45,7 +45,14 @@ namespace EPAM.CSCourse2016.SilkinIvan.JSONParser
         public JKeyValuePair(JItem key, JItem value, JItem parent = null) : this(parent)
         {
             Key = key;
-            Value = value;
+            if (value is JKeyValuePair)
+            {
+                Value = new JObject(this, value);
+            }
+            else
+            {
+                Value = value;
+            }
             Parent = parent;
         }
         public override void BuildString(ref StringBuilder builder)
