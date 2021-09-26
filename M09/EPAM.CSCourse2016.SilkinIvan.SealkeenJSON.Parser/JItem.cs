@@ -27,13 +27,19 @@ namespace EPAM.CSCourse2016.SilkinIvan.JSONParser
         }
         public void ListAllNodes(ref List<JItem> nodes)
         {
-            if (Items != null)
+            if (Items == null)
             {
-                foreach (var jItem in Items)
-                {
-                    nodes.Add(jItem);
-                }
+                Items = new List<JItem>();
             }
+            foreach (var jItem in Items)
+            {
+                jItem.ListAllNodes(ref nodes);
+                nodes.Add(jItem);
+            }
+        }
+        public virtual bool Equals(JItem jitem)
+        {
+            return false;
         }
         public virtual bool HasItems()
         {

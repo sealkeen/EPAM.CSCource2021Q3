@@ -15,6 +15,15 @@ namespace EPAM.CSCourse2016.SilkinIvan.JSONParser
             //    Contents += '\"';
             Parent = parent;
         }
+        public override bool Equals(JItem obj)
+        {
+            if ((obj is JSingleValue) && (obj as JSingleValue).Contents == this.Contents) {
+                return true;
+            }
+            else {
+                return false;
+            }
+        }
 
         public override void BuildString(ref StringBuilder builder)
         {

@@ -19,11 +19,35 @@ namespace QueriesClient
 
         static void Main(string[] args)
         {
+            args = new string[] { "-name", "Ivan"};
             JSONParser jSONParser = new JSONParser(FindJSONFile());
             var jItem = jSONParser.Parse();
-            Console.WriteLine(jItem.ToString());
+            //Console.WriteLine(jItem.ToString());
+            var jItemList = new List<JItem>();
+            jItem.ListAllNodes(ref jItemList);
+            var query = from JItem item in jItemList where (item is JKeyValuePair) select (JKeyValuePair)item;
+            ShowQuery(query);
+            if (args.Contains(_name))
+            {
+                //query = query.Where(x => x.Key.Equals(new JString("name")));
+                //ShowQuery(query);
+                if (args.Length > (Array.IndexOf(args, _name) + 1))
+                {
+                    query = query.Where(x => x.Contains(new JString(args[Array.IndexOf(args, _name)+1])));
+                    ShowQuery(query);
+                }
+            }
+
 
             Console.Read();
+        }
+        public static void ShowQuery(IEnumerable<JItem> query)
+        {
+            foreach (var item in query)
+            {
+                Console.WriteLine(item.ToString());
+            }
+            Console.WriteLine();
         }
 
         private static string FindJSONFile()

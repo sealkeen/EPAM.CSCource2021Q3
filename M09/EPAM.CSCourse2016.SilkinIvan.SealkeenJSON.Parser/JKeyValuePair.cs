@@ -63,5 +63,14 @@ namespace EPAM.CSCourse2016.SilkinIvan.JSONParser
             if( Value != null )
             Value.BuildString(ref builder);
         }
+
+        public bool Contains(JItem jSingleValue)
+        {
+            if ( Key.Equals(jSingleValue) || Value.Equals(jSingleValue) )
+            {
+                return true;
+            }
+            return false;
+        }
     }
 }
