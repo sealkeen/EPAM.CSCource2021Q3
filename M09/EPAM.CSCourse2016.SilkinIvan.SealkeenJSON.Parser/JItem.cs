@@ -38,6 +38,16 @@ namespace EPAM.CSCourse2016.SilkinIvan.JSONParser
                 nodes.Add(jItem);
             }
         }
+        public JItem FindUpperItemWithNode(JString jString)
+        {
+            while (this.Parent != null) {
+                if (this.Contains(jString))
+                    return this;
+                else
+                    this.Parent.FindUpperItemWithNode(jString);
+            }
+            return new JString("Item not found");
+        }
         public virtual bool Equals(JItem jitem)
         {
             return false;

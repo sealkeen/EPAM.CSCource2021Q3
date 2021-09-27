@@ -24,26 +24,30 @@ namespace QueriesClient
             //Console.WriteLine(jItem.ToString());
             var jItemList = new List<JItem>();
             jItem.ListAllNodes(ref jItemList);
-            var query = from JItem item in jItemList where (item is JKeyValuePair) select (JKeyValuePair)item;
+            var query = from JItem item in jItemList where item.HasKeyOrValue() select (JKeyValuePair)item;
             ShowQuery(query);
 
-            args = new string[] { "-mark", "4" };
-            ShowQueryByParameter(query, args, "-mark");
+            //args = new string[] { "-mark", "4" };
+            //ShowQueryByParameter(query, args, "-mark", false);
 
-            //args = new string[] { "-name", "Ivan" };
-            //ShowQueryByParameter(query, args, "-name");
+            args = new string[] { "-name", "Ivan" };
+            ShowQueryByEqualParameter(query, args, "-name", true);
 
             Console.Read();
         }
 
-        public static void ShowQueryByParameter(IEnumerable<JKeyValuePair> query, string[] args, string parameter)
+        public static void ShowQueryByEqualParameter(IEnumerable<JKeyValuePair> query, string[] args, string parameter, bool key = true)
         {
             if (args.Contains(parameter))
             {
                 if (args.Length > (Array.IndexOf(args, parameter) + 1))
                 {
+
                     var certainQuery = query.Where(x => 
-                        x.Value.Equals(new JSingleValue(args[Array.IndexOf(args, parameter) + 1]))).Select(x => x.Parent);
+                        (key ? x.Key : x.Value)
+                        .Equals(new JString(args[Array.IndexOf(args, parameter) + 1])))
+                        .Select(x => x.Parent);
+
                     ShowQuery(certainQuery);
                 }
             }

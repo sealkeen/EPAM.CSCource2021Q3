@@ -40,7 +40,7 @@ namespace QueriesTests
         {
             JObject testResult = new JObject(studentArray);
             JKeyValuePair student = new JKeyValuePair( 
-                new JString( "name" ),
+                new JString( "Student" ),
                 new JKeyValuePair(new JString(firstName), new JString(lastName))
                 );
             testResult.Add( student, 
