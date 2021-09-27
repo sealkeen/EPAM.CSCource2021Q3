@@ -26,6 +26,29 @@ namespace EPAM.CSCourse2016.SilkinIvan.JSONParser
             sW.Close();
             return true;
         }
+        public static JItem Factory(JItemType itemType, string value)
+        {
+            switch (itemType)
+            {
+                case JItemType.SingleValue:
+                    return new JSingleValue(value);
+                case JItemType.String:
+                    return new JString(value);
+            }
+            return null;
+        }
+
+        public JItem FindContainerOrReturnParent(JSingleValue jSingleValue)
+        {
+            var container = this.Parent;
+            while (container != null)
+            {
+                if (container.Contains(jSingleValue))
+                    return container;
+                container = container.Parent;
+            }
+            return this.Parent;
+        }
         public void ListAllNodes(ref List<JItem> nodes)
         {
             if (Items == null)
@@ -38,16 +61,7 @@ namespace EPAM.CSCourse2016.SilkinIvan.JSONParser
                 nodes.Add(jItem);
             }
         }
-        public JItem FindUpperItemWithNode(JString jString)
-        {
-            while (this.Parent != null) {
-                if (this.Contains(jString))
-                    return this;
-                else
-                    this.Parent.FindUpperItemWithNode(jString);
-            }
-            return new JString("Item not found");
-        }
+
         public virtual bool Equals(JItem jitem)
         {
             return false;

@@ -13,7 +13,7 @@ namespace EPAM.CSCourse2016.SilkinIvan.JSONParser
             //    Contents = '\"' + Contents;
             //if (Contents[Contents.Length - 1] != '\"')
             //    Contents += '\"';
-            Parent = parent;
+            //Parent = parent;
         }
         public override bool Equals(JItem obj)
         {

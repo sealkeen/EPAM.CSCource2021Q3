@@ -58,6 +58,14 @@ namespace EPAM.CSCourse2016.SilkinIvan.JSONParser
             //}
             Parent = parent;
         }
+
+        public override bool Contains(JSingleValue jItem)
+        {
+            if (Key.Equals(jItem) || Value.Equals(jItem))
+                return true;
+            return false;
+        }
+
         public override bool HasKeyOrValue()
         {
             return true;

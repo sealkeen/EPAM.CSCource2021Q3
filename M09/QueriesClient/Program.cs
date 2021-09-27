@@ -27,26 +27,26 @@ namespace QueriesClient
             var query = from JItem item in jItemList where item.HasKeyOrValue() select (JKeyValuePair)item;
             ShowQuery(query);
 
-            //args = new string[] { "-mark", "4" };
-            //ShowQueryByParameter(query, args, "-mark", false);
+            args = new string[] { "-mark", "4" };
+            ShowQueryByEqualParameter(query, args, "-mark", false, JItemType.SingleValue);
 
             args = new string[] { "-name", "Ivan" };
-            ShowQueryByEqualParameter(query, args, "-name", true);
+            ShowQueryByEqualParameter(query, args, "-name", true, JItemType.String);
 
             Console.Read();
         }
-
-        public static void ShowQueryByEqualParameter(IEnumerable<JKeyValuePair> query, string[] args, string parameter, bool key = true)
+        public static void ShowQueryByEqualParameter(IEnumerable<JKeyValuePair> query, string[] args, string parameter, 
+            bool key = true, JItemType itemType = JItemType.SingleValue)
         {
             if (args.Contains(parameter))
             {
                 if (args.Length > (Array.IndexOf(args, parameter) + 1))
                 {
-
+                    var student = new JString("Student");
                     var certainQuery = query.Where(x => 
                         (key ? x.Key : x.Value)
-                        .Equals(new JString(args[Array.IndexOf(args, parameter) + 1])))
-                        .Select(x => x.Parent);
+                        .Equals(JItem.Factory(itemType, args[Array.IndexOf(args, parameter) + 1])))
+                        .Select(x => x.FindContainerOrReturnParent(student));
 
                     ShowQuery(certainQuery);
                 }
