@@ -27,16 +27,21 @@ namespace QueriesClient
             var query = from JItem item in jItemList where item.HasKeyOrValue() select (JKeyValuePair)item;
             ShowQuery(query);
 
-            args = new string[] { "-mark", "4" };
-            ShowQueryByEqualParameter(query, args, "-mark", false, JItemType.SingleValue);
+            args = new string[] { "-mark", "2" };
+            ShowQueryByParameter(query, args, "-mark", CompareType.LessThan, false, JItemType.SingleValue);
 
             args = new string[] { "-name", "Ivan" };
-            ShowQueryByEqualParameter(query, args, "-name", true, JItemType.String);
+            ShowQueryByParameter(query, args, "-name", CompareType.Equals, true, JItemType.String);
 
             Console.Read();
         }
-        public static void ShowQueryByEqualParameter(IEnumerable<JKeyValuePair> query, string[] args, string parameter, 
-            bool key = true, JItemType itemType = JItemType.SingleValue)
+        public static void ShowQueryByParameter(
+            IEnumerable<JKeyValuePair> query, 
+            string[] args, 
+            string parameter, 
+            CompareType compareType,
+            bool key = true, 
+            JItemType itemType = JItemType.SingleValue)
         {
             if (args.Contains(parameter))
             {
@@ -45,8 +50,9 @@ namespace QueriesClient
                     var student = new JString("Student");
                     var certainQuery = query.Where(x => 
                         (key ? x.Key : x.Value)
-                        .Equals(JItem.Factory(itemType, args[Array.IndexOf(args, parameter) + 1])))
-                        .Select(x => x.FindContainerOrReturnParent(student));
+                        .Compare(JItem. Factory(itemType, args[Array.IndexOf(args, parameter) + 1])) 
+                        == (int)compareType
+                        ).Select(x => x.FindContainerOrReturnParent(student));
 
                     ShowQuery(certainQuery);
                 }

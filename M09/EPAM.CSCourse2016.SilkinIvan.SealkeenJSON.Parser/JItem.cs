@@ -26,7 +26,7 @@ namespace EPAM.CSCourse2016.SilkinIvan.JSONParser
             sW.Close();
             return true;
         }
-        public static JItem Factory(JItemType itemType, string value)
+        public static JSingleValue Factory(JItemType itemType, string value)
         {
             switch (itemType)
             {
@@ -69,6 +69,20 @@ namespace EPAM.CSCourse2016.SilkinIvan.JSONParser
         public virtual bool Contains(JSingleValue jItem)
         {
             return false;
+        }
+        public virtual int Compare(JSingleValue singleValue)
+        {
+            if (!(this is JSingleValue))
+            {
+                return 1;
+            } else {
+                var compared = singleValue.Contents.CompareTo((this as JSingleValue).Contents);
+                if (compared < 0)
+                    return -1;
+                else if (compared > 0)
+                    return 1;
+                return 0;
+            }
         }
         public virtual bool HasItems()
         {
