@@ -16,12 +16,28 @@ namespace EPAM.CSCourse2016.SilkinIvan.JSONParser
             //Parent = parent;
         }
 
+        public string GetValueQuotesRemoved()
+        { 
+            return Contents.Trim('\"');
+        }
+
         public override bool ContainsIntegerValue()
         {
             if (Contents != null)
             {
                 int result = 0;
                 if (int.TryParse(Contents, out result) == true)
+                    return true;
+            }
+            return false;
+        }
+
+        public override bool ContainsDateTimeValue()
+        {
+            if (Contents != null)
+            {
+                System.DateTime result;
+                if (System.DateTime.TryParse(GetValueQuotesRemoved(), out result) == true)
                     return true;
             }
             return false;

@@ -21,9 +21,10 @@ namespace QueriesClient
         {
             JSONParser jSONParser = new JSONParser(FindJSONFile());
             var jItem = jSONParser.Parse();
-            //Console.WriteLine(jItem.ToString());
+
             var jItemList = new List<JItem>();
             jItem.ListAllNodes(ref jItemList);
+
             var query = from JItem item in jItemList where item.HasKeyOrValue() select (JKeyValuePair)item;
             
             QueryRetriver queryRetriver = new QueryRetriver();
@@ -43,14 +44,12 @@ namespace QueriesClient
             args = new string[] { "-name", "Ivan" };
             queryRetriver.ShowQueryEqualByParameter(query, args, "-name", true, JItemType.String);
 
-            //var higherMarks = from JKeyValuePair pair in query 
-            //            where pair.ContainsIntegerValue() 
-            //            select pair;
-            //var higherMarksObjects = higherMarks
-            //    .Where(p => p.GetIntegerValueOrReturnNull() >= int.Parse(mark))
-            //    .Select(x => x.FindContainerOrReturnParent(new JString("Student")));
-            //ShowQuery(higherMarksObjects);
+            args = new string[] { "-name", "Ivan" };
+            queryRetriver.ShowQueryEqualByParameter(query, args, "-name", true, JItemType.String);
 
+            args = new string[] { "-date", "11/20/2012" };
+            queryRetriver.ShowQueryWithDateTimeComparedToParameter(query, args, "-date", CompareType.MoreOrEquals,
+                false, JItemType.String);
 
             Console.Read();
         }

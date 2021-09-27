@@ -15,6 +15,7 @@ namespace QueriesClient
             }
             Console.WriteLine("______");
         }
+
         public bool CompareByMethod<T>(T source, T target, CompareType compareType) where T : IComparable
         {
             if (source is null)
@@ -50,9 +51,37 @@ namespace QueriesClient
 
                     var higherMarksObjects = higherMarks
                         .Where(p =>
-                        CompareByMethod(
+                            CompareByMethod(
                             p.GetIntegerValue(),
                             int.Parse(args[Array.IndexOf(args, parameter) + 1]),
+                            compareType)
+                        )
+                        .Select(x => x.FindContainerOrReturnParent(new JString("Student")));
+                    ShowQuery(higherMarksObjects);
+                }
+            }
+        }
+
+        public void ShowQueryWithDateTimeComparedToParameter(
+            IEnumerable<JKeyValuePair> query,
+            string[] args, string parameter, CompareType compareType,
+            bool key = true,
+            JItemType itemType = JItemType.String)
+        {
+            if (args.Contains(parameter))
+            {
+                if (args.Length > (Array.IndexOf(args, parameter) + 1))
+                {
+                    Console.WriteLine($"Queries with date {compareType} {args[Array.IndexOf(args, parameter) + 1]}");
+                    var higherMarks = from JKeyValuePair pair in query
+                                      where pair.ContainsDateTimeValue()
+                                      select pair;
+
+                    var higherMarksObjects = higherMarks
+                        .Where(p =>
+                            CompareByMethod(
+                            p.GetDateTimeValue(),
+                            DateTime.Parse(args[Array.IndexOf(args, parameter) + 1]),
                             compareType)
                         )
                         .Select(x => x.FindContainerOrReturnParent(new JString("Student")));

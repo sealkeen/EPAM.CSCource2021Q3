@@ -76,6 +76,11 @@ namespace EPAM.CSCourse2016.SilkinIvan.JSONParser
             return false;
         }
 
+        public virtual bool ContainsDateTimeValue()
+        {
+            return false;
+        }
+
         public virtual int? GetIntegerValueOrReturnNull()
         {
             return null;

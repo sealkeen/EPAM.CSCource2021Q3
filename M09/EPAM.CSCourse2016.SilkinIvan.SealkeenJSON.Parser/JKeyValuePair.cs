@@ -1,4 +1,5 @@
-﻿using System.Text;
+﻿using System;
+using System.Text;
 
 namespace EPAM.CSCourse2016.SilkinIvan.JSONParser
 {
@@ -75,6 +76,17 @@ namespace EPAM.CSCourse2016.SilkinIvan.JSONParser
             }
             return false;
         }
+
+        public override bool ContainsDateTimeValue()
+        {
+            if (Value != null)
+            {
+                if ((Value is JSingleValue) && (Value as JSingleValue).ContainsDateTimeValue())
+                    return true;
+            }
+            return false;
+        }
+
         public override int? GetIntegerValueOrReturnNull()
         {
             if (ContainsIntegerValue()) {
@@ -87,6 +99,10 @@ namespace EPAM.CSCourse2016.SilkinIvan.JSONParser
         public int GetIntegerValue()
         {
             return int.Parse((Value as JSingleValue).Contents);
+        }
+        public DateTime GetDateTimeValue()
+        {
+            return DateTime.Parse((Value as JSingleValue).GetValueQuotesRemoved());
         }
 
         public override bool HasKeyOrValue()
