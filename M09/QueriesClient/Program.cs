@@ -27,20 +27,27 @@ namespace QueriesClient
             var query = from JItem item in jItemList where item.HasKeyOrValue() select (JKeyValuePair)item;
             ShowQuery(query);
 
-            const string mark = "3";
-            args = new string[] { "-mark", mark };
+            args = new string[] { "-mark", "3" };
             ShowQueryEqualByParameter(query, args, "-mark", false, JItemType.SingleValue);
+
+            args = new string[] { "-mark", "3" };
+            ShowQueryWithIntComparedToParameter(query,
+                args, "-mark", CompareType.LessOrEquals, false, JItemType.SingleValue);
+
+            args = new string[] { "-mark", "4" };
+            ShowQueryWithIntComparedToParameter(query,
+                args, "-mark", CompareType.MoreOrEquals, false, JItemType.SingleValue);
 
             args = new string[] { "-name", "Ivan" };
             ShowQueryEqualByParameter(query, args, "-name", true, JItemType.String);
 
-            var higherMarks = from JKeyValuePair pair in query 
-                        where pair.ContainsIntegerValue() 
-                        select pair;
-            var higherMarksObjects = higherMarks
-                .Where(p => p.GetIntegerValueOrReturnNull() >= int.Parse(mark))
-                .Select(x => x.FindContainerOrReturnParent(new JString("Student")));
-            ShowQuery(higherMarksObjects);
+            //var higherMarks = from JKeyValuePair pair in query 
+            //            where pair.ContainsIntegerValue() 
+            //            select pair;
+            //var higherMarksObjects = higherMarks
+            //    .Where(p => p.GetIntegerValueOrReturnNull() >= int.Parse(mark))
+            //    .Select(x => x.FindContainerOrReturnParent(new JString("Student")));
+            //ShowQuery(higherMarksObjects);
 
 
             Console.Read();
@@ -56,34 +63,24 @@ namespace QueriesClient
             {
                 if (args.Length > (Array.IndexOf(args, parameter) + 1))
                 {
+                    Console.WriteLine($"Queries with value {compareType} {args[Array.IndexOf(args, parameter) + 1]}");
                     var higherMarks = from JKeyValuePair pair in query
                                       where pair.ContainsIntegerValue()
                                       select pair;
+
+
                     var higherMarksObjects = higherMarks
-                        .Where(p => p.GetIntegerValueOrReturnNull() >= 
-                        int.Parse(args[Array.IndexOf(args, parameter) + 1])
+                        .Where(p => 
+                        CompareByMethod(
+                            p.GetIntegerValue(), 
+                            int.Parse(args[Array.IndexOf(args, parameter) + 1]), 
+                            compareType)
                         )
                         .Select(x => x.FindContainerOrReturnParent(new JString("Student")));
                     ShowQuery(higherMarksObjects);
                 }
             }
         }
-        public bool CompareIntsByMethod(int? left, int right, CompareType compareType)
-        {
-            if (left is null)
-                return false;
-            int compared = left.Value.CompareTo(right);
-            if (compared == 0)
-                return true;
-            else if (compared < 0 || compareType == CompareType.LessOrEquals) {
-                return true;
-            }
-            else if (compared > 0 || compareType == CompareType.MoreOrEquals) {
-                return true;
-            }
-            return false;
-        }
-
         public static void ShowQueryEqualByParameter(
         IEnumerable<JKeyValuePair> query, 
         string[] args, string parameter, bool key = true, 
@@ -93,6 +90,7 @@ namespace QueriesClient
             {
                 if (args.Length > (Array.IndexOf(args, parameter) + 1))
                 {
+                    Console.WriteLine($"Queries with value Equal to {args[Array.IndexOf(args, parameter) + 1]}");
                     var student = new JString("Student");
                     var certainQuery = query.Where(x => 
                         (key ? x.Key : x.Value)
@@ -102,6 +100,22 @@ namespace QueriesClient
                 }
             }
         }
+        public static bool CompareByMethod<T>(T source, T target, CompareType compareType) where T : IComparable
+        {
+            if (source is null)
+                return false;
+            int compared = source.CompareTo(target);
+            if (compared == 0)
+                return true;
+            else if (compared < 0 && compareType == CompareType.LessOrEquals) {
+                return true;
+            }
+            else if (compared > 0 && compareType == CompareType.MoreOrEquals) {
+                return true;
+            }
+            return false;
+        }
+
 
         public static void ShowQueryMoreThanParameter(
         IEnumerable<JKeyValuePair> query,

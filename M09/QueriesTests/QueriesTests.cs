@@ -24,7 +24,11 @@ namespace QueriesTests
                 CreateNewStudentTestResult(testResultArray, ("Pavel"), ("Pavlov")),
                 CreateNewStudentTestResult(testResultArray, ("Roman"), ("Romanov")),
                 CreateNewStudentTestResult(testResultArray, ("Boris"), ("Borisov")),
-                CreateNewStudentTestResult(testResultArray, ("Ulya"), ("Ulyeva"))
+                CreateNewStudentTestResult(testResultArray, ("Ulya"), ("Ulyeva")),
+                CreateNewStudentTestResult(testResultArray, ("Danil"), ("Danilov")),
+                CreateNewStudentTestResult(testResultArray, ("Nikolay"), ("Nikolaev")),
+                CreateNewStudentTestResult(testResultArray, ("Bela"), ("Belova")),
+                CreateNewStudentTestResult(testResultArray, ("Grigory"), ("Gregoriev"))
                 );
 
             mathTest.Value = testResultArray;
