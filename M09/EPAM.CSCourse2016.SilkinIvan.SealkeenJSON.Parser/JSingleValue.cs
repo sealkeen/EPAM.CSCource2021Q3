@@ -24,7 +24,6 @@ namespace EPAM.CSCourse2016.SilkinIvan.JSONParser
                 return false;
             }
         }
-
         public override void BuildString(ref StringBuilder builder)
         {
             builder.Append((this as JSingleValue).Contents);

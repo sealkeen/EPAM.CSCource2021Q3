@@ -45,32 +45,31 @@ namespace EPAM.CSCourse2016.SilkinIvan.JSONParser
         public JKeyValuePair(JItem key, JItem value, JItem parent = null) : this(parent)
         {
             Key = key;
-            if (value is JKeyValuePair)
-            {
-                Value = new JObject(this, value);
-            }
-            else
-            {
-                Value = value;
-            }
+            //if (value != null)
+            //{
+                if (value is JKeyValuePair)
+                {
+                    Value = new JObject(this, value);
+                }
+                else
+                {
+                    Value = value;
+                }
+            //}
             Parent = parent;
+        }
+        public override bool HasKeyOrValue()
+        {
+            return true;
         }
         public override void BuildString(ref StringBuilder builder)
         {
-            if( Key != null )
+            if ( Key != null )
                 Key.BuildString(ref builder);
             builder.Append(":");
-            if( Value != null )
-            Value.BuildString(ref builder);
+            if ( Value != null )
+                Value.BuildString(ref builder);
         }
 
-        public bool Contains(JItem jSingleValue)
-        {
-            if ( Key.Equals(jSingleValue) || Value.Equals(jSingleValue) )
-            {
-                return true;
-            }
-            return false;
-        }
     }
 }

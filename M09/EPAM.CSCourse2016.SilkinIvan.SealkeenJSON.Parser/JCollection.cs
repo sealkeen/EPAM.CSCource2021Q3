@@ -12,6 +12,15 @@ namespace EPAM.CSCourse2016.SilkinIvan.JSONParser
         {
             Items = new List<JItem>();
         }
+        public override bool Contains(JSingleValue jItem)
+        {
+            foreach (var item in Items)
+            {
+                if (item.Contains(jItem))
+                    return true;
+            }
+            return false;
+        }
         public JCollection(JItem parent, params JItem[] jItems) : base(parent)
         {
             Items = new List<JItem>();
@@ -40,8 +49,11 @@ namespace EPAM.CSCourse2016.SilkinIvan.JSONParser
         {
             foreach (var item in jItem)
             {
-                item.Parent = this;
-                Items.Add(item);
+                if (item != null)
+                {
+                    item.Parent = this;
+                    Items.Add(item);
+                }
             }
         }
     }

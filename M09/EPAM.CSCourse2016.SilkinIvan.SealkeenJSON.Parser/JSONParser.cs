@@ -167,7 +167,7 @@ namespace EPAM.CSCourse2016.SilkinIvan.JSONParser
             if (_pendingForPairValue)
             {
                 JItem jI = new JSingleValue(_JItemContentsBuffer.ToString(), _currentItem);
-                ((JKeyValuePair)_currentKeyValuePair).Value = jI;
+                _currentKeyValuePair.Value = jI;
                 _keyValueStack.Pop();
                 _pendingForPairValue = false;
             }

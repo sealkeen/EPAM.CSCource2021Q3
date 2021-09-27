@@ -9,6 +9,7 @@ namespace EPAM.CSCourse2016.SilkinIvan.JSONParser
     {
         protected List<JItem> Items;
         public JItem Parent = null;
+        bool built = false;
         public JItem(JItem parent = null)
         {
             Parent = parent;
@@ -41,7 +42,15 @@ namespace EPAM.CSCourse2016.SilkinIvan.JSONParser
         {
             return false;
         }
+        public virtual bool Contains(JSingleValue jItem)
+        {
+            return false;
+        }
         public virtual bool HasItems()
+        {
+            return false;
+        }
+        public virtual bool HasKeyOrValue()
         {
             return false;
         }

@@ -19,7 +19,6 @@ namespace QueriesClient
 
         static void Main(string[] args)
         {
-            args = new string[] { "-name", "Ivan"};
             JSONParser jSONParser = new JSONParser(FindJSONFile());
             var jItem = jSONParser.Parse();
             //Console.WriteLine(jItem.ToString());
@@ -27,27 +26,36 @@ namespace QueriesClient
             jItem.ListAllNodes(ref jItemList);
             var query = from JItem item in jItemList where (item is JKeyValuePair) select (JKeyValuePair)item;
             ShowQuery(query);
-            if (args.Contains(_name))
-            {
-                //query = query.Where(x => x.Key.Equals(new JString("name")));
-                //ShowQuery(query);
-                if (args.Length > (Array.IndexOf(args, _name) + 1))
-                {
-                    query = query.Where(x => x.Contains(new JString(args[Array.IndexOf(args, _name)+1])));
-                    ShowQuery(query);
-                }
-            }
 
+            args = new string[] { "-mark", "4" };
+            ShowQueryByParameter(query, args, "-mark");
+
+            //args = new string[] { "-name", "Ivan" };
+            //ShowQueryByParameter(query, args, "-name");
 
             Console.Read();
         }
+
+        public static void ShowQueryByParameter(IEnumerable<JKeyValuePair> query, string[] args, string parameter)
+        {
+            if (args.Contains(parameter))
+            {
+                if (args.Length > (Array.IndexOf(args, parameter) + 1))
+                {
+                    var certainQuery = query.Where(x => 
+                        x.Value.Equals(new JSingleValue(args[Array.IndexOf(args, parameter) + 1]))).Select(x => x.Parent);
+                    ShowQuery(certainQuery);
+                }
+            }
+        }
+
         public static void ShowQuery(IEnumerable<JItem> query)
         {
             foreach (var item in query)
             {
                 Console.WriteLine(item.ToString());
             }
-            Console.WriteLine();
+            Console.WriteLine("______");
         }
 
         private static string FindJSONFile()
