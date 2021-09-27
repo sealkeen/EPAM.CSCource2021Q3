@@ -16,6 +16,28 @@ namespace EPAM.CSCourse2016.SilkinIvan.JSONParser
             //Parent = parent;
         }
 
+        public override bool ContainsIntegerValue()
+        {
+            if (Contents != null)
+            {
+                int result = 0;
+                if (int.TryParse(Contents, out result) == true)
+                    return true;
+            }
+            return false;
+        }
+
+        public override int? GetIntegerValueOrReturnNull()
+        {
+            if (ContainsIntegerValue())
+            {
+                int result;
+                if (int.TryParse(Contents, out result))
+                    return result;
+            }
+            return null;
+        }
+
         public override bool Equals(JItem obj)
         {
             if ((obj is JSingleValue) && (obj as JSingleValue).Contents == this.Contents) {

@@ -70,13 +70,26 @@ namespace EPAM.CSCourse2016.SilkinIvan.JSONParser
         {
             return false;
         }
-        public virtual int Compare(JSingleValue singleValue)
+
+        public virtual bool ContainsIntegerValue()
+        {
+            return false;
+        }
+
+        public virtual int? GetIntegerValueOrReturnNull()
+        {
+            return null;
+        }
+        public virtual int? CompareIntsOrReturnNull(JSingleValue singleValue)
         {
             if (!(this is JSingleValue))
             {
-                return 1;
+                return null;
             } else {
-                var compared = singleValue.Contents.CompareTo((this as JSingleValue).Contents);
+                int? value = singleValue.GetIntegerValueOrReturnNull();
+                if (value == null)
+                    return null;
+                var compared = value.Value.CompareTo( (this as JSingleValue).Contents);
                 if (compared < 0)
                     return -1;
                 else if (compared > 0)
@@ -84,6 +97,7 @@ namespace EPAM.CSCourse2016.SilkinIvan.JSONParser
                 return 0;
             }
         }
+
         public virtual bool HasItems()
         {
             return false;

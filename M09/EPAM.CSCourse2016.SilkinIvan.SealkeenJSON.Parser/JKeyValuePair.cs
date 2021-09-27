@@ -66,6 +66,25 @@ namespace EPAM.CSCourse2016.SilkinIvan.JSONParser
             return false;
         }
 
+        public override bool ContainsIntegerValue()
+        {
+            if (Value != null)
+            {
+                if ((Value is JSingleValue) && (Value as JSingleValue).ContainsIntegerValue())
+                    return true;
+            }
+            return false;
+        }
+        public override int? GetIntegerValueOrReturnNull()
+        {
+            if (ContainsIntegerValue()) {
+                int result;
+                if(int.TryParse((Value as JSingleValue).Contents, out result))
+                    return result;
+            }
+            return null;
+        }
+
         public override bool HasKeyOrValue()
         {
             return true;

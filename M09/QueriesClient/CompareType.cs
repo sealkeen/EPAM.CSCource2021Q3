@@ -6,6 +6,11 @@ namespace QueriesClient
 {
     enum CompareType
     {
-        LessThan = -1, Equals = 0, MoreThan = 1 
+        LessOrEquals = -1, MoreOrEquals = 1, 
+        //LessOrEquals = -2, MoreOrEquals = 2
+    }
+    class ValueComparer
+    {
+
     }
 }
