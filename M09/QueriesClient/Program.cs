@@ -25,21 +25,23 @@ namespace QueriesClient
             var jItemList = new List<JItem>();
             jItem.ListAllNodes(ref jItemList);
             var query = from JItem item in jItemList where item.HasKeyOrValue() select (JKeyValuePair)item;
-            ShowQuery(query);
+            
+            QueryRetriver queryRetriver = new QueryRetriver();
+            queryRetriver.ShowQuery(query);
 
             args = new string[] { "-mark", "3" };
-            ShowQueryEqualByParameter(query, args, "-mark", false, JItemType.SingleValue);
+            queryRetriver.ShowQueryEqualByParameter(query, args, "-mark", false, JItemType.SingleValue);
 
             args = new string[] { "-mark", "3" };
-            ShowQueryWithIntComparedToParameter(query,
+            queryRetriver.ShowQueryWithIntComparedToParameter(query,
                 args, "-mark", CompareType.LessOrEquals, false, JItemType.SingleValue);
 
             args = new string[] { "-mark", "4" };
-            ShowQueryWithIntComparedToParameter(query,
+            queryRetriver.ShowQueryWithIntComparedToParameter(query,
                 args, "-mark", CompareType.MoreOrEquals, false, JItemType.SingleValue);
 
             args = new string[] { "-name", "Ivan" };
-            ShowQueryEqualByParameter(query, args, "-name", true, JItemType.String);
+            queryRetriver.ShowQueryEqualByParameter(query, args, "-name", true, JItemType.String);
 
             //var higherMarks = from JKeyValuePair pair in query 
             //            where pair.ContainsIntegerValue() 
@@ -51,100 +53,6 @@ namespace QueriesClient
 
 
             Console.Read();
-        }
-
-        public static void ShowQueryWithIntComparedToParameter(
-            IEnumerable<JKeyValuePair> query,
-            string[] args, string parameter, CompareType compareType,
-            bool key = true,
-            JItemType itemType = JItemType.SingleValue)
-        {
-            if (args.Contains(parameter))
-            {
-                if (args.Length > (Array.IndexOf(args, parameter) + 1))
-                {
-                    Console.WriteLine($"Queries with value {compareType} {args[Array.IndexOf(args, parameter) + 1]}");
-                    var higherMarks = from JKeyValuePair pair in query
-                                      where pair.ContainsIntegerValue()
-                                      select pair;
-
-
-                    var higherMarksObjects = higherMarks
-                        .Where(p => 
-                        CompareByMethod(
-                            p.GetIntegerValue(), 
-                            int.Parse(args[Array.IndexOf(args, parameter) + 1]), 
-                            compareType)
-                        )
-                        .Select(x => x.FindContainerOrReturnParent(new JString("Student")));
-                    ShowQuery(higherMarksObjects);
-                }
-            }
-        }
-        public static void ShowQueryEqualByParameter(
-        IEnumerable<JKeyValuePair> query, 
-        string[] args, string parameter, bool key = true, 
-        JItemType itemType = JItemType.SingleValue)
-        {
-            if (args.Contains(parameter))
-            {
-                if (args.Length > (Array.IndexOf(args, parameter) + 1))
-                {
-                    Console.WriteLine($"Queries with value Equal to {args[Array.IndexOf(args, parameter) + 1]}");
-                    var student = new JString("Student");
-                    var certainQuery = query.Where(x => 
-                        (key ? x.Key : x.Value)
-                        .Equals(JItem. Factory(itemType, args[Array.IndexOf(args, parameter) + 1])) 
-                        ).Select(x => x.FindContainerOrReturnParent(student));
-                    ShowQuery(certainQuery);
-                }
-            }
-        }
-        public static bool CompareByMethod<T>(T source, T target, CompareType compareType) where T : IComparable
-        {
-            if (source is null)
-                return false;
-            int compared = source.CompareTo(target);
-            if (compared == 0)
-                return true;
-            else if (compared < 0 && compareType == CompareType.LessOrEquals) {
-                return true;
-            }
-            else if (compared > 0 && compareType == CompareType.MoreOrEquals) {
-                return true;
-            }
-            return false;
-        }
-
-
-        public static void ShowQueryMoreThanParameter(
-        IEnumerable<JKeyValuePair> query,
-        string[] args,
-        string parameter,
-        bool key = true,
-        JItemType itemType = JItemType.SingleValue)
-            {
-                if (args.Contains(parameter))
-                {
-                    if (args.Length > (Array.IndexOf(args, parameter) + 1))
-                    {
-                        var student = new JString("Student");
-                        var certainQuery = query.Where(x =>
-                            (key ? x.Key : x.Value)
-                            .Equals(JItem.Factory(itemType, args[Array.IndexOf(args, parameter) + 1]))
-                            ).Select(x => x.FindContainerOrReturnParent(student));
-                        ShowQuery(certainQuery);
-                    }
-                }
-            }
-
-        public static void ShowQuery(IEnumerable<JItem> query)
-        {
-            foreach (var item in query)
-            {
-                Console.WriteLine(item.ToString());
-            }
-            Console.WriteLine("______");
         }
 
         private static string FindJSONFile()
