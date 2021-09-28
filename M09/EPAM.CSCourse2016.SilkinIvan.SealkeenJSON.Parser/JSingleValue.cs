@@ -9,11 +9,6 @@ namespace EPAM.CSCourse2016.SilkinIvan.JSONParser
             base(parent)
         {
             Contents = value;
-            //if (Contents[0] != '\"')
-            //    Contents = '\"' + Contents;
-            //if (Contents[Contents.Length - 1] != '\"')
-            //    Contents += '\"';
-            //Parent = parent;
         }
 
         public string GetValueQuotesRemoved()
