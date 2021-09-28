@@ -38,6 +38,7 @@ namespace EPAM.CSCourse2016.SilkinIvan.JSONParser
                 _sourceString = new StringBuilder(streamReader.ReadToEnd());
             }
         }
+
         private JItem InitializeStructure()
         {
             JKeyValuePair newPair = new JKeyValuePair(null, null);
@@ -68,7 +69,7 @@ namespace EPAM.CSCourse2016.SilkinIvan.JSONParser
             {
                 for (int c = _indexOfTheChar; c < _sourceString.Length; c++)
                 {
-                    StartParse();
+                    ParseNextSymbol();
                 }
             }
             catch
@@ -115,11 +116,11 @@ namespace EPAM.CSCourse2016.SilkinIvan.JSONParser
         /// <summary>
         /// The Main Parsing Method
         /// </summary>
-        private void StartParse()
+        private void ParseNextSymbol()
         {
             ++_indexOfTheChar;
 
-            if (!IsSymbolInsideQuotes())
+            if (!ParseSymbolInsideQuotes())
             {
                 InspectSymbol(_sourceString[_indexOfTheChar]);
             }
@@ -271,6 +272,7 @@ namespace EPAM.CSCourse2016.SilkinIvan.JSONParser
             }
             _itemStack.Pop();
         }
+
         private void HandleCurlyBracket()
         {
             _currentKeyValuePair = _keyValueStack.Peek();
@@ -298,7 +300,7 @@ namespace EPAM.CSCourse2016.SilkinIvan.JSONParser
             _itemStack.Push(item);
         }
 
-        private bool IsSymbolInsideQuotes()
+        private bool ParseSymbolInsideQuotes()
         {
             if (_isCharacterInsideQuotes)
             {

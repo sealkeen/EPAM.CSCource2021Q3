@@ -36,7 +36,6 @@ namespace EPAM.CSCourse2016.SilkinIvan.JSONParser
                     Items.Add(value);
                 else if (Items.Count == 2)
                     Items[1] = value;
-                //else throw new ArgumentException("Value cannot be set without a key.");
             }
         }
         public JKeyValuePair(JItem parent) : base(parent)
