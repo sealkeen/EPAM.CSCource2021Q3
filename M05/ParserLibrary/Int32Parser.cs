@@ -10,7 +10,7 @@ namespace ParserLibrary
             var trimmed = source.Trim();
             var negative = false;
             if ( !Regex.IsMatch(source, @"-?\d{1,10}" )) // {-9999999999 : 9999999999}
-                throw new ArgumentException();
+                throw new ArgumentException("Parse() Error: The argument string source was not of integer type.");
             if ( trimmed[0] == '-' )
             {
                 negative = true;
