@@ -11,7 +11,7 @@ namespace DataConverterUnitTests
         public void AverageWordLengthTest()
         {
             //2 Second Task of M03
-            WordAverageLengthDetector wordAverageLengthDetector = new WordAverageLengthDetector();
+            var wordAverageLengthDetector = new WordAverageLengthDetector();
 
             var length = wordAverageLengthDetector.GetAverageLength("One.Two three");
             Debug.WriteLine(length);
@@ -44,7 +44,7 @@ namespace DataConverterUnitTests
         public void SumIntegersTest()
         {
             //4 Fourth Task of M03
-            NumberSummator nS = new NumberSummator();
+            var nS = new NumberSummator();
             var result = nS.SumInts("123", "456");
             Assert.AreEqual(result, "579");
 
@@ -77,7 +77,7 @@ namespace DataConverterUnitTests
         public void SumDoubleTest()
         {
             //4 Fourth Task of M03
-            NumberSummator nS = new NumberSummator();
+            var nS = new NumberSummator();
             var result = nS.SumNumbers("123.0", "456");
             Assert.AreEqual(result, "579.0");
 
