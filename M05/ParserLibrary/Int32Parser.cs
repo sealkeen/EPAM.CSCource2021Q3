@@ -4,8 +4,8 @@ namespace ParserLibrary
 {
     public class Int32Parser
     {
-        private const int _maxLengthInt32 = 10;
-        private const int digitASCIIOffset = 48;
+        public const int MaxLengthInt32 = 10;
+        public const int DigitASCIIOffset = 48;
         public int Parse(string source) {
             var trimmed = source.Trim();
             var negative = false;
@@ -22,7 +22,7 @@ namespace ParserLibrary
             for (int i = lastIndex; i >= 0; i--)
             {
                 var power = (lastIndex - i);
-                var value  = trimmed[i] - digitASCIIOffset;
+                var value  = trimmed[i] - DigitASCIIOffset;
                 var tenInPower = Math.Pow(10, power);
                 result += (int)(value * tenInPower);
             }

@@ -18,6 +18,7 @@ namespace ConsoleApplication
 
         static void Main(string[] args)
         {
+	    InitializeLogger();
             var parser = new Int32Parser();
             try
             {
