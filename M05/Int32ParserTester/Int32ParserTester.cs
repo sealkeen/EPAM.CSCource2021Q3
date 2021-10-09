@@ -1,6 +1,8 @@
+using Microsoft.Extensions.DependencyInjection;
 using NUnit.Framework;
 using ParserLibrary;
 using System.Diagnostics;
+
 
 namespace Int32ParserTester
 {
@@ -17,9 +19,19 @@ namespace Int32ParserTester
             Assert.Pass();
         }
         [Test]
+        public void ErrorParseTest()
+        {
+            var args = new string[] { "edf" };
+            var serviceProvider = ConsoleApplication.Program.BuildDi(ConsoleApplication.Program.GetConfiguration());
+            var parser = serviceProvider.GetRequiredService<Int32Parser>();
+            ConsoleApplication.Program.RunParser(parser, ref args);
+        }
+
+        [Test]
         public void Int32ParserTest()
         {
-            var parser = new Int32Parser();
+            var serviceProvider = ConsoleApplication.Program.BuildDi(ConsoleApplication.Program.GetConfiguration());
+            var parser = serviceProvider.GetRequiredService<Int32Parser>();
 
             var result = parser.Parse("-8765");
             Trace.WriteLine(result = parser.Parse("-8765"));
