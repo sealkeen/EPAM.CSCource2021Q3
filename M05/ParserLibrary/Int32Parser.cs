@@ -64,6 +64,7 @@ namespace ParserLibrary
                 if (!char.IsDigit(value[i]))
                 {
                     _iLogger.LogError(NotAnIntegerErrorMessage + " Value:" + value);
+                    return;
                     //throw new ArgumentException(NotAnIntegerErrorMessage); //return false;
                 }
             }

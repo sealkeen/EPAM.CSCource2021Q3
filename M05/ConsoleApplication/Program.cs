@@ -60,33 +60,6 @@ namespace ConsoleApplication
             Array.Resize(ref args, args.Length + 1);
             args.SetValue(argument, args.Length - 1);
         }
-        public static NLog.Config.LoggingConfiguration InitializeLogger()
-        {
-            var config = new NLog.Config.LoggingConfiguration();
-            var logfile = new NLog.Targets.FileTarget("logfile") { FileName = logfileName };
-            var logconsole = new NLog.Targets.ConsoleTarget("logconsole");
-            
-            config.AddRule(NLog.LogLevel.Info, NLog.LogLevel.Fatal, logconsole);
-            config.AddRule(NLog.LogLevel.Info, NLog.LogLevel.Fatal, logfile);
-            NLog.LogManager.Configuration = config;
-            return config;
-        }
-        public static void InitializeLogger2()
-        {
-            NLog.Common.InternalLogger.LogLevel = NLog.LogLevel.Debug;
-            NLog.Common.InternalLogger.LogToConsole = true;
-            NLog.Common.InternalLogger.LogFile = $"{Environment.CurrentDirectory + System.IO.Path.DirectorySeparatorChar}log.txt"; // On Linux one can use "/home/nlog-internal.txt"
-
-            DebugTarget target = new DebugTarget();
-            target.Layout = "${message}";
-            NLog.Config.SimpleConfigurator.ConfigureForTargetLogging(target, NLog.LogLevel.Error);
-        }
-        public static void InitializeLogger3()
-        {
-            NLog.LogManager.Setup().SetupInternalLogger(s =>
-            s.SetMinimumLogLevel(NLog.LogLevel.Error).LogToFile(logfileName)
-            );
-        }
 
         public static IConfiguration GetConfiguration()
         {
