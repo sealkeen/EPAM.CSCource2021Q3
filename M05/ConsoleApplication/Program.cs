@@ -60,6 +60,17 @@ namespace ConsoleApplication
             Array.Resize(ref args, args.Length + 1);
             args.SetValue(argument, args.Length - 1);
         }
+        public static NLog.Config.LoggingConfiguration InitializeLogger()
+        {
+            var config = new NLog.Config.LoggingConfiguration();
+            var logfile = new NLog.Targets.FileTarget("logfile") { FileName = logfileName };
+            var logconsole = new NLog.Targets.ConsoleTarget("logconsole");
+            
+            config.AddRule(NLog.LogLevel.Info, NLog.LogLevel.Fatal, logconsole);
+            config.AddRule(NLog.LogLevel.Info, NLog.LogLevel.Fatal, logfile);
+            NLog.LogManager.Configuration = config;
+            return config;
+        }
 
         public static IConfiguration GetConfiguration()
         {
