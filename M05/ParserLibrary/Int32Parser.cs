@@ -54,8 +54,8 @@ namespace ParserLibrary
             {
                 if (value.Length >= 2 && !char.IsDigit(value[1]))
                 {
+                    throw new ArgumentException(NotAnIntegerErrorMessage); //return false;
                     _iLogger.LogError(NotAnIntegerErrorMessage + " Value:" + value);
-                    //throw new ArgumentException(NotAnIntegerErrorMessage); //return false;
                 }
                 startIndex = 1;
             }
@@ -63,9 +63,8 @@ namespace ParserLibrary
             {
                 if (!char.IsDigit(value[i]))
                 {
+                    throw new ArgumentException(NotAnIntegerErrorMessage); //return false;
                     _iLogger.LogError(NotAnIntegerErrorMessage + " Value:" + value);
-                    return;
-                    //throw new ArgumentException(NotAnIntegerErrorMessage); //return false;
                 }
             }
         }
@@ -75,7 +74,7 @@ namespace ParserLibrary
             if (string.IsNullOrEmpty(source))
             {
                 _iLogger.LogError(ArgumentNullErrorMessage);
-                //throw new ArgumentNullException(ArgumentNullErrorMessage);
+                throw new ArgumentNullException(ArgumentNullErrorMessage);
             }
         }
     }

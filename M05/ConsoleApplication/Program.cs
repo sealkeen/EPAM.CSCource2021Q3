@@ -1,11 +1,7 @@
 ﻿using System;
 using ParserLibrary;
 using NLog;
-using NLog.Targets;
-using System.Diagnostics;
 using Microsoft.Extensions.Logging;
-using System.Xml;
-using System.IO;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using NLog.Extensions.Logging;
@@ -15,8 +11,7 @@ namespace ConsoleApplication
     public class Program
     {
         public static readonly NLog.Logger ClassLogger = NLog.LogManager.GetCurrentClassLogger();
-        private static string logfileName = 
-            $"{Environment.CurrentDirectory + System.IO.Path.DirectorySeparatorChar}log.txt";
+        private static string logfileName = $"{Environment.CurrentDirectory + System.IO.Path.DirectorySeparatorChar}log.txt";
         public static void Main(string[] args)
         {
             try 
