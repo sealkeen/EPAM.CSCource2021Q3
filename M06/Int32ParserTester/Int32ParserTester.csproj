@@ -1,0 +1,26 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>netcoreapp3.1</TargetFramework>
+
+    <IsPackable>false</IsPackable>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="NUnit" Version="3.12.0" />
+    <PackageReference Include="NUnit3TestAdapter" Version="3.16.1" />
+    <PackageReference Include="Microsoft.NET.Test.Sdk" Version="16.5.0" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\..\..\..\Documents\VCSharp\EPAM\Training 2021 Q3\M05\ConsoleApplication\ConsoleApplication.csproj" />
+    <ProjectReference Include="..\..\..\..\Documents\VCSharp\EPAM\Training 2021 Q3\M05\ParserLibrary\ParserLibrary.csproj" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Reference Include="Int32ParserTester">
+      <HintPath>..\..\..\..\Documents\VCSharp\EPAM\Training 2021 Q3\M05\Int32ParserTester\bin\Debug\netcoreapp3.1\Int32ParserTester.dll</HintPath>
+    </Reference>
+  </ItemGroup>
+
+</Project>
