@@ -3,11 +3,18 @@ using System;
 using EPAM.CSCourse2016.SilkinIvan.JSONParser;
 using System.Diagnostics;
 using System.IO;
+using QueriesClient;
 
 namespace QueriesTests
 {
     public class QueriesTests
     {
+        [Test]
+        public void ParseJSON()
+        {
+            QueriesClient.Program.Main(new string[] { "-mark", "3", "-name", "Ivan", "-date", "11/20/2012" });
+        }
+
         private static Random rnd = new Random();
         [Test]
         public void CreateJSONTest()
@@ -54,5 +61,6 @@ namespace QueriesTests
                 );
             return testResult;
         }
+
     }
 }

@@ -7,7 +7,7 @@ using System.Collections.Generic;
 
 namespace QueriesClient
 {
-    class Program
+    public class Program
     {
         private static Random rnd = new Random();
         private const string _name = "-name";
@@ -17,9 +17,14 @@ namespace QueriesClient
         private const string _dateto = "-dateto";
         private const string _test = "-test";
 
-        static void Main(string[] args)
+        static public void Main(string[] args)
         {
-            JSONParser jSONParser = new JSONParser(FindJSONFile());
+            var filePath = FindJSONFile();
+            JSONParser jSONParser;
+            if (filePath == null)
+                jSONParser = new JSONParser(new string[] { "\"Math Test\":[{{\"Ivan\":\"Ivanov\"},\"9 / 26 / 2021 6:27:19 PM\",4},{{\"Pyotr\":\"Petrov\"},\"9 / 26 / 2021 6:27:19 PM\",3},{{\"Vasily\":\"Vasilyev\"},\"9 / 26 / 2021 6:27:19 PM\",3},{{\"Maria\":\"Marieva\"},\"9 / 26 / 2021 6:27:19 PM\",4},{{\"Pavel\":\"Pavlov\"},\"9 / 26 / 2021 6:27:19 PM\",4},{{\"Roman\":\"Romanov\"},\"9 / 26 / 2021 6:27:19 PM\",4},{{\"Boris\":\"Borisov\"},\"9 / 26 / 2021 6:27:19 PM\",3},{{\"Ulya\":\"Ulyeva\"},\"9 / 26 / 2021 6:27:19 PM\",2}]" });
+            else
+                jSONParser = new JSONParser(filePath);
             var jItem = jSONParser.Parse();
 
             var jItemList = new List<JItem>();
@@ -56,12 +61,17 @@ namespace QueriesClient
 
         private static string FindJSONFile()
         {
+            string result = "";
             DirectoryInfo dI = new DirectoryInfo(Environment.CurrentDirectory);
             while (dI.Name != "M09" && dI.Parent.Exists)
             {
                 dI = dI.Parent;
             }
-            return $@"{dI.FullName}\QueriesTests\bin\Release\netcoreapp3.1\MathTest.json";
+            result = $@"{dI.FullName}\QueriesTests\bin\Release\netcoreapp3.1\MathTest.json";
+            if (File.Exists(result))
+                return result;
+            else
+                return null;
         }
     }
 }

@@ -39,6 +39,14 @@ namespace EPAM.CSCourse2016.SilkinIvan.JSONParser
             }
         }
 
+        public JSONParser(string[] JSON) : this()
+        {
+            if (JSON.Length > 0)
+            {
+                _sourceString = new StringBuilder(JSON[0]);
+            }
+        }
+
         private JItem InitializeStructure()
         {
             JKeyValuePair newPair = new JKeyValuePair(null, null);
