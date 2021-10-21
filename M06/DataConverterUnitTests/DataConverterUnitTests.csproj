@@ -13,7 +13,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\TextAndNumberDataConverter\TextAndNumberDataConverter.csproj" />
+    <ProjectReference Include="..\..\..\..\Documents\VCSharp\EPAM\Training 2021 Q3\M03\TextAndNumberDataConverter\TextAndNumberDataConverter.csproj" />
   </ItemGroup>
 
 </Project>
