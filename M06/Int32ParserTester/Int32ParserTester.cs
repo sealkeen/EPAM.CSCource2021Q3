@@ -1,6 +1,7 @@
 using NUnit.Framework;
-using ParserLibrary;
 using System.Diagnostics;
+using ParserLibrary;
+using Microsoft.Extensions.DependencyInjection;
 
 namespace Int32ParserTester
 {
@@ -10,37 +11,31 @@ namespace Int32ParserTester
         public void Setup()
         {
         }
-
         [Test]
-        public void Test1()
+        [TestCase(new object[] { "edf" })]
+        public void ErrorParseTest(string[] args)
         {
-            Assert.Pass();
+            var serviceProvider = ConsoleApplication.Program.BuildDi(ConsoleApplication.Program.GetConfiguration());
+            var parser = serviceProvider.GetRequiredService<Int32Parser>();
+            ConsoleApplication.Program.RunParser(parser, ref args);
         }
+
         [Test]
-        public void Int32ParserTest()
+        [TestCase( "edf" )]
+        [TestCase( "-8765", -8765)]
+        [TestCase( "2222765", 2222765)]
+        [TestCase( "99999997", 99999997)]
+        [TestCase( "-987654321", -987654321)]
+        [TestCase( "-212111210", -212111210)]
+        [TestCase( "-012111210", -12111210)]
+        public void Int32ParserTest(string source, int expected)
         {
-            var parser = new Int32Parser();
+            var serviceProvider = ConsoleApplication.Program.BuildDi(ConsoleApplication.Program.GetConfiguration());
+            var parser = serviceProvider.GetRequiredService<Int32Parser>();
 
-            var result = parser.Parse("-8765");
-            Trace.WriteLine(result = parser.Parse("-8765"));
-            Assert.AreEqual(-8765, result);
-
-            Trace.WriteLine(result = parser.Parse("2222765"));
-            Assert.AreEqual(2222765, result);
-
-            Trace.WriteLine(result = parser.Parse("99999997"));
-            Assert.AreEqual(99999997, result);
-
-            Trace.WriteLine(result = parser.Parse("-987654321"));
-            Assert.AreEqual(-987654321, result);
-
-            Trace.WriteLine(result = parser.Parse("-212111210"));
-            Assert.AreEqual(-212111210, result);
-
-            Trace.WriteLine(result = parser.Parse("-012111210"));
-            Assert.AreEqual(-12111210, result);
-
-            //Assert.Pass();
+            int result;
+            Trace.WriteLine(result = parser.Parse(source));
+            Assert.AreEqual(expected, result);
         }
 
         [SetUpFixture]

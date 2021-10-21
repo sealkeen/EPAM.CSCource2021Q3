@@ -13,7 +13,14 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\ParserLibrary\ParserLibrary.csproj" />
+    <ProjectReference Include="..\..\..\..\Documents\VCSharp\EPAM\Training 2021 Q3\M05\ConsoleApplication\ConsoleApplication.csproj" />
+    <ProjectReference Include="..\..\..\..\Documents\VCSharp\EPAM\Training 2021 Q3\M05\ParserLibrary\ParserLibrary.csproj" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Reference Include="Int32ParserTester">
+      <HintPath>..\..\..\..\Documents\VCSharp\EPAM\Training 2021 Q3\M05\Int32ParserTester\bin\Debug\netcoreapp3.1\Int32ParserTester.dll</HintPath>
+    </Reference>
   </ItemGroup>
 
 </Project>
