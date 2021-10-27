@@ -1,0 +1,48 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.31402.337
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MatrixSorter", "MatrixSorter.csproj", "{3E22BB1C-C2D1-4DC0-9BAD-D332EF2FD1A1}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{3EF21A20-FDCB-46E3-AE74-0AE07AADDDD9}"
+	ProjectSection(SolutionItems) = preProject
+		.editorconfig = .editorconfig
+	EndProjectSection
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MatrixSorterTests", "..\MatrixAndMessageDataHandlerTests\MatrixSorterTests.csproj", "{2937C325-CA04-4820-A58D-97A7EBED57FA}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "CountDown", "..\CountDown\CountDown.csproj", "{993C07DA-27B7-4BD1-9377-54B9B444B808}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CountDownTester", "..\CountDownTester\CountDownTester.csproj", "{8F749E21-5823-4DF8-A50D-ABBA492C652E}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{3E22BB1C-C2D1-4DC0-9BAD-D332EF2FD1A1}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{3E22BB1C-C2D1-4DC0-9BAD-D332EF2FD1A1}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{3E22BB1C-C2D1-4DC0-9BAD-D332EF2FD1A1}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{3E22BB1C-C2D1-4DC0-9BAD-D332EF2FD1A1}.Release|Any CPU.Build.0 = Release|Any CPU
+		{2937C325-CA04-4820-A58D-97A7EBED57FA}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{2937C325-CA04-4820-A58D-97A7EBED57FA}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{2937C325-CA04-4820-A58D-97A7EBED57FA}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{2937C325-CA04-4820-A58D-97A7EBED57FA}.Release|Any CPU.Build.0 = Release|Any CPU
+		{993C07DA-27B7-4BD1-9377-54B9B444B808}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{993C07DA-27B7-4BD1-9377-54B9B444B808}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{993C07DA-27B7-4BD1-9377-54B9B444B808}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{993C07DA-27B7-4BD1-9377-54B9B444B808}.Release|Any CPU.Build.0 = Release|Any CPU
+		{8F749E21-5823-4DF8-A50D-ABBA492C652E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{8F749E21-5823-4DF8-A50D-ABBA492C652E}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{8F749E21-5823-4DF8-A50D-ABBA492C652E}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{8F749E21-5823-4DF8-A50D-ABBA492C652E}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {BDAEE92B-91B6-4763-BF37-B730BDC5561D}
+	EndGlobalSection
+EndGlobal
