@@ -1,6 +1,3 @@
-## Recording
-[Module 9: Introduction to Language Integrated Query (LINQ)](https://videoportal.epam.com/video/EKz1JeNm0L9ylmzA7v5Q)
-
 ## Material Content 
 - *LINQ-to-objects queries: Fluent Syntax and Query Operators.*
 - *Lambda expressions and Func signatures. Query Expressions. Supporting Query Expressions. Deferred Evaluation. LINQ, Generics, and IQueryable(T).*

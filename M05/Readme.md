@@ -1,8 +1,3 @@
-## Recording
-[2020Q3](https://videoportal.epam.com/video/3KpWY4LzNe2L800mYjo2)
-
-[2021Q1](https://videoportal.epam.com/video/dBNrJdbejleBLdkzaQXW)
-
 ## Material Content 
 - *Exception Sources. Exceptions from APIs, your code.*
 - *Handling exceptions and catch blocks.*

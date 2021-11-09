@@ -1,8 +1,3 @@
-## Recording
-[2020Q3](https://videoportal.epam.com/video/v0Aba28Rvk6NbrWKJkz9)
-
-[2021Q1](https://videoportal.epam.com/video/gkXbYq1dj5WqqrlEYelw)
-
 ## Material Content 
 - *Delegate types.*
 - *Creating a delegate.*

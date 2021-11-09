@@ -1,8 +1,3 @@
-## Recording
-[2020Q3](https://videoportal.epam.com/video/Dj6qaB2b9Z6Bd2RoagPW)
-
-[2021Q1](https://videoportal.epam.com/video/dBNrJdbejlvLgxj1aQXW)
-
 ## Material Content
 - *Char type*
 - *String type*

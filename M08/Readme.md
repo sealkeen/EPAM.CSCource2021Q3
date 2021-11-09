@@ -1,8 +1,3 @@
-## Recording
-[2020Q3](https://videoportal.epam.com/video/vbdGYlolO4BA1B4NaWqy)
-
-[2021Q1](https://videoportal.epam.com/video/KOrM7kn3Er80yDgBJp1w)
-
 ## Material Content 
 - *Generic types.*
 - *Type constraints: reference type,  value type, new(),  type inference and etc.*

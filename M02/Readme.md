@@ -1,8 +1,3 @@
-## Recording
-[2020Q3 Module 2: Creating types in C#](https://videoportal.epam.com/video/B9Ry76DxDXny8kEKY8xq)
-
-[2021Q1 Module 2: Creating types in C#](https://videoportal.epam.com/video/MRwdYoVQWr3xG5VWa3bL)
-
 ## Material Content 
 - *Value and Reference Types.*
 - *Classes vs Struct. Boxing and Unboxing. Naming conventions.*

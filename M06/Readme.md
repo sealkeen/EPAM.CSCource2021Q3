@@ -1,8 +1,3 @@
-## Recording
-[2020Q3](https://videoportal.epam.com/video/2qOL7xxPeD33P5l87483)
-
-[2021Q1](https://videoportal.epam.com/video/VKQwJWkqj9vVG4Q3J1EW)
-
 ## Основное содержание материала 
 - *Введение в модульное тестирование.*
 - *Модульное тестирование в C#. Фреймворки. Лучшие практики и рекомендации.*

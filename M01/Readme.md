@@ -1,8 +1,3 @@
-## Recording 
-[Lectures 0 and 1 2020Q3](https://videoportal.epam.com/video/zXWOJMdqvL1ZA5gDYnDv) 
-
-[Lecture 1 2021Q1](https://videoportal.epam.com/video/9w0kaE206Ro5loQGYeLn)
-
 ## Material Content 
 - *Framework Overview.*
 - *The CLR and Core Framework.*

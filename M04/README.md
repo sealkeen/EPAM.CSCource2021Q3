@@ -1,8 +1,3 @@
-## Recording
-[2020Q3](https://videoportal.epam.com/video/kaEX8A7e)
-
-[2021Q1](https://videoportal.epam.com/video/nDBqYLWQL5gEdemaXERy)
-
 ## Material Content 
 - *Encapsulation. Access modifiers. Properties. Automatic properties. Indexers.*
 - *Inheritance.*
