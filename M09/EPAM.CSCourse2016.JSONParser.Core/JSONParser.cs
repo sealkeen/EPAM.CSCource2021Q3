@@ -1,16 +1,15 @@
-﻿
-//CREATED BY SILKIN IVAN AT EPAM TRAINING 2016
+﻿//CREATED BY SILKIN IVAN AT EPAM TRAINING 2016
 
 using System.Collections.Generic;
 using System.Diagnostics;
 using System.Text;
 using System.Linq;
-using EPAM.CSCourse2016.ParserPerfTester.Common;
+//using EPAM.CSCourse2016.ParserPerfTester.Common;
 using System.IO;
 
-namespace EPAM.CSCourse2016.SilkinIvan.JSONParser
+namespace EPAM.CSCourse2016.JSONParser.Library
 {
-    public class JSONParser : IParser
+    public class JSONParser //: IParser
     {
         public readonly char[] EmptySymbols = { ' ', '\t', '\r', '\n' };
 
@@ -140,24 +139,12 @@ namespace EPAM.CSCourse2016.SilkinIvan.JSONParser
                 return;
             switch (symbol)
             {
-                case '{':
-                    HandleCurlyBracket();
-                    break;
-                case '}':
-                    HandleClosingCurlyBracket();
-                    break;
-                case '[':
-                    HandleSquareBracket();
-                    break;
-                case ']':
-                    HandleClosingSquareBracket();
-                    break;
-                case ':':
-                    HandleColon();
-                    break;
-                case ',':
-                    HandleComma();
-                    break;
+                case '{': HandleCurlyBracket(); break;
+                case '}': HandleClosingCurlyBracket();  break;
+                case '[': HandleSquareBracket(); break;
+                case ']': HandleClosingSquareBracket(); break;
+                case ':': HandleColon(); break;
+                case ',': HandleComma(); break;
                 case '\"':
                     _JItemContentsBuffer.Append(_sourceString[_indexOfTheChar]);
                     _syntaxChars.Push('\"');

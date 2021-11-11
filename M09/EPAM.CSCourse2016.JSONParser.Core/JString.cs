@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace EPAM.CSCourse2016.SilkinIvan.JSONParser
+namespace EPAM.CSCourse2016.JSONParser.Library
 {
     public class JString : JSingleValue
     {
@@ -12,6 +12,5 @@ namespace EPAM.CSCourse2016.SilkinIvan.JSONParser
             if (Contents[Contents.Length - 1] != '\"')
                 Contents += '\"';
         }
-
     }
 }

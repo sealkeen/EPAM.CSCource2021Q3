@@ -1,7 +1,7 @@
 ﻿using System.Collections.Generic;
 using System.Text;
 
-namespace EPAM.CSCourse2016.SilkinIvan.JSONParser
+namespace EPAM.CSCourse2016.JSONParser.Library
 {
     public class JCollection : JItem
     {

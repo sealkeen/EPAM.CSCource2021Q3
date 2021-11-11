@@ -2,7 +2,7 @@
 using System.Text;
 using System.IO;
 
-namespace EPAM.CSCourse2016.SilkinIvan.JSONParser
+namespace EPAM.CSCourse2016.JSONParser.Library
 {
     //Represents the structure of a JSON document
     public abstract class JItem
